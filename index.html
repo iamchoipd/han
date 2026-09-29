@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-  />
+  >
 
   <title>한글 글자 조합 읽기</title>
 
@@ -39,7 +39,7 @@
     }
 
     .app {
-      width: min(780px, 100%);
+      width: min(800px, 100%);
       min-height: 100vh;
 
       margin: 0 auto;
@@ -48,7 +48,6 @@
 
     .title {
       text-align: center;
-
       margin: 8px 0 18px;
 
       font-size: clamp(28px, 6vw, 40px);
@@ -57,7 +56,6 @@
 
     .card {
       background: white;
-
       border-radius: 22px;
 
       padding: 20px;
@@ -68,15 +66,13 @@
         rgba(0, 0, 0, 0.055);
     }
 
-    /* ======================================================
+    /* =============================
        기록판
-    ====================================================== */
+    ============================= */
 
     .score-board {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
 
       gap: 10px;
     }
@@ -102,18 +98,73 @@
     }
 
     .score-value {
-      font-size: clamp(
-        21px,
-        5vw,
-        28px
-      );
-
+      font-size: clamp(21px, 5vw, 28px);
       font-weight: 900;
     }
 
-    /* ======================================================
-       문제 화면
-    ====================================================== */
+    /* =============================
+       글자 수 선택
+    ============================= */
+
+    .length-title {
+      margin-bottom: 12px;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .length-buttons {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 9px;
+    }
+
+    .length-button {
+      min-height: 58px;
+
+      border:
+        2px solid #e0e4eb;
+
+      border-radius: 15px;
+
+      background: #fff;
+
+      color: #333;
+
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .length-button.selected {
+      border-color: #4c7df3;
+
+      background: #eef3ff;
+
+      color: #315fc7;
+    }
+
+    .length-description {
+      margin-top: 11px;
+
+      padding: 11px 13px;
+
+      border-radius: 12px;
+
+      background: #f6f7fa;
+
+      color: #666;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+    /* =============================
+       문제
+    ============================= */
 
     .practice-card {
       text-align: center;
@@ -126,12 +177,12 @@
       display: inline-block;
 
       padding: 7px 14px;
-
       margin-bottom: 8px;
 
       border-radius: 999px;
 
       background: #eef3ff;
+
       color: #315fc7;
 
       font-size: 14px;
@@ -146,31 +197,70 @@
 
       min-height: 210px;
 
+      padding: 10px;
+
+      font-size: clamp(75px, 21vw, 160px);
+
+      line-height: 1.1;
+
+      font-weight: 900;
+
+      letter-spacing: 0.04em;
+
+      word-break: keep-all;
+
+      user-select: none;
+    }
+
+    /*
+      한 글자일 때는 더 크게
+    */
+    .letter.single-letter {
       font-size: clamp(
         125px,
         32vw,
         205px
       );
+    }
 
-      line-height: 1;
-
-      font-weight: 900;
-
-      user-select: none;
+    /*
+      세 글자는 작은 모바일에서
+      조금 더 작게
+    */
+    .letter.three-letter {
+      font-size: clamp(
+        63px,
+        18vw,
+        125px
+      );
     }
 
     .composition {
-      min-height: 45px;
+      min-height: 48px;
 
       font-size: clamp(
-        24px,
-        6vw,
-        34px
+        20px,
+        5vw,
+        30px
       );
 
       color: #555;
 
       font-weight: 900;
+
+      line-height: 1.6;
+    }
+
+    .composition-part {
+      display: inline-block;
+
+      padding: 2px 5px;
+    }
+
+    .composition-divider {
+      color: #aaa;
+
+      margin: 0 2px;
     }
 
     .hidden {
@@ -204,9 +294,9 @@
       font-weight: 800;
     }
 
-    /* ======================================================
+    /* =============================
        맞음 / 틀림
-    ====================================================== */
+    ============================= */
 
     .answer-buttons {
       display: grid;
@@ -254,9 +344,9 @@
       color: #c32d2d;
     }
 
-    /* ======================================================
-       설정 영역
-    ====================================================== */
+    /* =============================
+       선택 메뉴
+    ============================= */
 
     details {
       background: white;
@@ -313,15 +403,14 @@
       font-weight: 800;
     }
 
-    .mini-actions
-    .clear-button {
+    .mini-actions .clear-button {
       background: #ffeaea;
       color: #b52727;
     }
 
-    /* ======================================================
+    /* =============================
        자모 선택
-    ====================================================== */
+    ============================= */
 
     .choice-grid {
       display: grid;
@@ -380,9 +469,9 @@
       font-size: 15px;
     }
 
-    /* ======================================================
-       현재 선택 정보
-    ====================================================== */
+    /* =============================
+       선택 정보
+    ============================= */
 
     .selection-summary {
       line-height: 1.7;
@@ -397,7 +486,7 @@
     .selection-label {
       display: inline-block;
 
-      min-width: 55px;
+      min-width: 62px;
 
       font-weight: 900;
     }
@@ -406,9 +495,15 @@
       color: #444;
     }
 
-    /* ======================================================
+    .combination-highlight {
+      color: #315fc7;
+
+      font-weight: 900;
+    }
+
+    /* =============================
        시작 / 종료
-    ====================================================== */
+    ============================= */
 
     .main-buttons {
       display: grid;
@@ -478,9 +573,9 @@
       opacity: 0.4;
     }
 
-    /* ======================================================
+    /* =============================
        오답
-    ====================================================== */
+    ============================= */
 
     .wrong-title {
       margin-bottom: 10px;
@@ -515,9 +610,9 @@
       font-size: 14px;
     }
 
-    /* ======================================================
-       결과 팝업
-    ====================================================== */
+    /* =============================
+       결과창
+    ============================= */
 
     .modal-backdrop {
       display: none;
@@ -635,13 +730,12 @@
       color: #333;
     }
 
-    /* ======================================================
+    /* =============================
        모바일
-    ====================================================== */
+    ============================= */
 
-    @media (
-      max-width: 480px
-    ) {
+    @media (max-width: 480px) {
+
       .app {
         padding: 10px;
       }
@@ -651,7 +745,7 @@
       }
 
       .letter {
-        min-height: 170px;
+        min-height: 165px;
       }
 
       .choice-grid {
@@ -679,6 +773,7 @@
         grid-template-columns:
           1fr;
       }
+
     }
   </style>
 </head>
@@ -692,9 +787,7 @@
   </h1>
 
 
-  <!-- ============================================
-       학습 기록
-  ============================================= -->
+  <!-- 기록 -->
 
   <section class="card">
 
@@ -752,9 +845,57 @@
   </section>
 
 
-  <!-- ============================================
-       글자
-  ============================================= -->
+  <!-- 글자 수 -->
+
+  <section class="card">
+
+    <div class="length-title">
+      🔤 글자 수
+    </div>
+
+
+    <div class="length-buttons">
+
+      <button
+        class="length-button selected"
+        data-length="1"
+        type="button"
+      >
+        1글자
+      </button>
+
+
+      <button
+        class="length-button"
+        data-length="2"
+        type="button"
+      >
+        2글자
+      </button>
+
+
+      <button
+        class="length-button"
+        data-length="3"
+        type="button"
+      >
+        3글자
+      </button>
+
+    </div>
+
+
+    <div
+      class="length-description"
+      id="lengthDescription"
+    >
+      선택한 초성·모음·받침으로 한 글자를 만듭니다.
+    </div>
+
+  </section>
+
+
+  <!-- 문제 -->
 
   <section
     class="card practice-card"
@@ -769,7 +910,7 @@
 
 
     <div
-      class="letter"
+      class="letter single-letter"
       id="letter"
     >
       가
@@ -838,9 +979,7 @@
   </section>
 
 
-  <!-- ============================================
-       초성
-  ============================================= -->
+  <!-- 초성 -->
 
   <details open>
 
@@ -890,9 +1029,7 @@
   </details>
 
 
-  <!-- ============================================
-       모음
-  ============================================= -->
+  <!-- 모음 -->
 
   <details open>
 
@@ -942,9 +1079,7 @@
   </details>
 
 
-  <!-- ============================================
-       받침
-  ============================================= -->
+  <!-- 받침 -->
 
   <details open>
 
@@ -1010,9 +1145,7 @@
   </details>
 
 
-  <!-- ============================================
-       선택한 글자 정보
-  ============================================= -->
+  <!-- 현재 선택 -->
 
   <section class="card">
 
@@ -1026,9 +1159,23 @@
     </div>
 
 
-    <div
-      class="selection-summary"
-    >
+    <div class="selection-summary">
+
+      <div class="selection-row">
+
+        <span class="selection-label">
+          글자 수
+        </span>
+
+        <strong
+          class="combination-highlight"
+          id="selectedLengthText"
+        >
+          1글자
+        </strong>
+
+      </div>
+
 
       <div class="selection-row">
 
@@ -1078,10 +1225,26 @@
       <div class="selection-row">
 
         <span class="selection-label">
-          조합 수
+          한 음절
         </span>
 
         <strong
+          id="syllableCombinationCount"
+        >
+          0개
+        </strong>
+
+      </div>
+
+
+      <div class="selection-row">
+
+        <span class="selection-label">
+          전체 조합
+        </span>
+
+        <strong
+          class="combination-highlight"
           id="combinationCount"
         >
           0개
@@ -1094,9 +1257,7 @@
   </section>
 
 
-  <!-- ============================================
-       시작 / 종료
-  ============================================= -->
+  <!-- 시작 -->
 
   <div class="main-buttons">
 
@@ -1131,9 +1292,7 @@
   </button>
 
 
-  <!-- ============================================
-       오답
-  ============================================= -->
+  <!-- 오답 -->
 
   <section
     class="card"
@@ -1161,9 +1320,7 @@
 </main>
 
 
-<!-- ============================================
-     결과창
-============================================= -->
+<!-- 결과창 -->
 
 <div
   class="modal-backdrop"
@@ -1301,13 +1458,9 @@
 <script>
 
 /* ============================================================
-   1. 한글 데이터
+   한글 데이터
 ============================================================ */
 
-
-/*
-  초성 19개
-*/
 const consonants = [
 
   { char: "ㄱ", index: 0 },
@@ -1336,9 +1489,6 @@ const consonants = [
 ];
 
 
-/*
-  모음 21개
-*/
 const vowels = [
 
   { char: "ㅏ", index: 0 },
@@ -1373,14 +1523,6 @@ const vowels = [
 ];
 
 
-/*
-  종성
-
-  index 0 = 받침 없음
-
-  실제 받침은
-  1 ~ 27
-*/
 const finals = [
 
   {
@@ -1390,245 +1532,102 @@ const finals = [
     type: "none"
   },
 
-  {
-    char: "ㄱ",
-    index: 1,
-    type: "simple"
-  },
+  { char: "ㄱ", index: 1, type: "simple" },
+  { char: "ㄲ", index: 2, type: "simple" },
 
-  {
-    char: "ㄲ",
-    index: 2,
-    type: "simple"
-  },
+  { char: "ㄳ", index: 3, type: "double" },
 
-  {
-    char: "ㄳ",
-    index: 3,
-    type: "double"
-  },
+  { char: "ㄴ", index: 4, type: "simple" },
 
-  {
-    char: "ㄴ",
-    index: 4,
-    type: "simple"
-  },
+  { char: "ㄵ", index: 5, type: "double" },
+  { char: "ㄶ", index: 6, type: "double" },
 
-  {
-    char: "ㄵ",
-    index: 5,
-    type: "double"
-  },
+  { char: "ㄷ", index: 7, type: "simple" },
 
-  {
-    char: "ㄶ",
-    index: 6,
-    type: "double"
-  },
+  { char: "ㄹ", index: 8, type: "simple" },
 
-  {
-    char: "ㄷ",
-    index: 7,
-    type: "simple"
-  },
+  { char: "ㄺ", index: 9, type: "double" },
+  { char: "ㄻ", index: 10, type: "double" },
+  { char: "ㄼ", index: 11, type: "double" },
+  { char: "ㄽ", index: 12, type: "double" },
+  { char: "ㄾ", index: 13, type: "double" },
+  { char: "ㄿ", index: 14, type: "double" },
+  { char: "ㅀ", index: 15, type: "double" },
 
-  {
-    char: "ㄹ",
-    index: 8,
-    type: "simple"
-  },
+  { char: "ㅁ", index: 16, type: "simple" },
+  { char: "ㅂ", index: 17, type: "simple" },
 
-  {
-    char: "ㄺ",
-    index: 9,
-    type: "double"
-  },
+  { char: "ㅄ", index: 18, type: "double" },
 
-  {
-    char: "ㄻ",
-    index: 10,
-    type: "double"
-  },
-
-  {
-    char: "ㄼ",
-    index: 11,
-    type: "double"
-  },
-
-  {
-    char: "ㄽ",
-    index: 12,
-    type: "double"
-  },
-
-  {
-    char: "ㄾ",
-    index: 13,
-    type: "double"
-  },
-
-  {
-    char: "ㄿ",
-    index: 14,
-    type: "double"
-  },
-
-  {
-    char: "ㅀ",
-    index: 15,
-    type: "double"
-  },
-
-  {
-    char: "ㅁ",
-    index: 16,
-    type: "simple"
-  },
-
-  {
-    char: "ㅂ",
-    index: 17,
-    type: "simple"
-  },
-
-  {
-    char: "ㅄ",
-    index: 18,
-    type: "double"
-  },
-
-  {
-    char: "ㅅ",
-    index: 19,
-    type: "simple"
-  },
-
-  {
-    char: "ㅆ",
-    index: 20,
-    type: "simple"
-  },
-
-  {
-    char: "ㅇ",
-    index: 21,
-    type: "simple"
-  },
-
-  {
-    char: "ㅈ",
-    index: 22,
-    type: "simple"
-  },
-
-  {
-    char: "ㅊ",
-    index: 23,
-    type: "simple"
-  },
-
-  {
-    char: "ㅋ",
-    index: 24,
-    type: "simple"
-  },
-
-  {
-    char: "ㅌ",
-    index: 25,
-    type: "simple"
-  },
-
-  {
-    char: "ㅍ",
-    index: 26,
-    type: "simple"
-  },
-
-  {
-    char: "ㅎ",
-    index: 27,
-    type: "simple"
-  }
+  { char: "ㅅ", index: 19, type: "simple" },
+  { char: "ㅆ", index: 20, type: "simple" },
+  { char: "ㅇ", index: 21, type: "simple" },
+  { char: "ㅈ", index: 22, type: "simple" },
+  { char: "ㅊ", index: 23, type: "simple" },
+  { char: "ㅋ", index: 24, type: "simple" },
+  { char: "ㅌ", index: 25, type: "simple" },
+  { char: "ㅍ", index: 26, type: "simple" },
+  { char: "ㅎ", index: 27, type: "simple" }
 
 ];
 
 
 /* ============================================================
-   2. 기본 선택
+   기본 선택
 ============================================================ */
 
-
-/*
-  기본 초성
-*/
 const defaultConsonantIndexes = [
 
-  0,   // ㄱ
-  2,   // ㄴ
-  3,   // ㄷ
-  5,   // ㄹ
-  6,   // ㅁ
+  0,
+  2,
+  3,
+  5,
+  6,
 
-  7,   // ㅂ
-  9,   // ㅅ
-  11,  // ㅇ
-  12,  // ㅈ
-  18   // ㅎ
+  7,
+  9,
+  11,
+  12,
+  18
 
 ];
 
 
-/*
-  기본 모음
-*/
 const defaultVowelIndexes = [
 
-  0,   // ㅏ
-  2,   // ㅑ
-  4,   // ㅓ
-  6,   // ㅕ
-  8,   // ㅗ
+  0,
+  2,
+  4,
+  6,
+  8,
 
-  12,  // ㅛ
-  13,  // ㅜ
-  17,  // ㅠ
-  18,  // ㅡ
-  20   // ㅣ
+  12,
+  13,
+  17,
+  18,
+  20
 
 ];
 
 
-/*
-  초기에 받침은 없음만 선택
-*/
 const defaultFinalIndexes = [
   0
 ];
 
 
-/*
-  기본 받침
-
-  없음은 포함하지 않음
-*/
 const basicFinalIndexes = [
 
-  1,   // ㄱ
-  4,   // ㄴ
-  7,   // ㄷ
-  8,   // ㄹ
-  16,  // ㅁ
-  17,  // ㅂ
-  21   // ㅇ
+  1,
+  4,
+  7,
+  8,
+  16,
+  17,
+  21
 
 ];
 
 
-/*
-  홑받침
-*/
 const simpleFinalIndexes =
 
   finals
@@ -1646,7 +1645,7 @@ const simpleFinalIndexes =
 
 
 /* ============================================================
-   3. DOM
+   DOM
 ============================================================ */
 
 const consonantGrid =
@@ -1751,6 +1750,12 @@ const wrongList =
   );
 
 
+const selectedLengthText =
+  document.getElementById(
+    "selectedLengthText"
+  );
+
+
 const selectedConsonantsText =
   document.getElementById(
     "selectedConsonantsText"
@@ -1769,9 +1774,21 @@ const selectedFinalsText =
   );
 
 
+const syllableCombinationCount =
+  document.getElementById(
+    "syllableCombinationCount"
+  );
+
+
 const combinationCount =
   document.getElementById(
     "combinationCount"
+  );
+
+
+const lengthDescription =
+  document.getElementById(
+    "lengthDescription"
   );
 
 
@@ -1823,9 +1840,17 @@ const closeModalButton =
   );
 
 
+const lengthButtons =
+  document.querySelectorAll(
+    ".length-button"
+  );
+
+
 /* ============================================================
-   4. 현재 상태
+   상태
 ============================================================ */
+
+let selectedLength = 1;
 
 let correctCount = 0;
 
@@ -1850,7 +1875,7 @@ const wrongHistory =
 
 
 /* ============================================================
-   5. 선택 버튼 만들기
+   선택 버튼 생성
 ============================================================ */
 
 function createChoiceGrid(
@@ -1928,10 +1953,6 @@ function createChoiceGrid(
         item.char;
 
 
-      /*
-        선택이 변경될 때마다
-        요약 업데이트
-      */
       input.addEventListener(
         "change",
         updateSelectionSummary
@@ -1958,9 +1979,7 @@ function createChoiceGrid(
 }
 
 
-/*
-  초기 생성
-*/
+/* 초기 생성 */
 
 createChoiceGrid(
   consonants,
@@ -1987,7 +2006,7 @@ createChoiceGrid(
 
 
 /* ============================================================
-   6. 한글 조합 공식
+   한글 조합
 ============================================================ */
 
 function makeHangul(
@@ -2022,7 +2041,7 @@ function makeHangul(
 
 
 /* ============================================================
-   7. 선택한 요소 가져오기
+   선택된 항목 가져오기
 ============================================================ */
 
 function getSelectedItems(
@@ -2087,7 +2106,114 @@ function getSelectedFinals() {
 
 
 /* ============================================================
-   8. 선택 정보 표시
+   글자 수 변경
+============================================================ */
+
+function setWordLength(
+  length
+) {
+
+  selectedLength =
+    Number(length);
+
+
+  lengthButtons.forEach(
+    button => {
+
+      button.classList.toggle(
+        "selected",
+        Number(
+          button.dataset.length
+        ) === selectedLength
+      );
+
+    }
+  );
+
+
+  selectedLengthText.textContent =
+    `${selectedLength}글자`;
+
+
+  if (
+    selectedLength === 1
+  ) {
+
+    lengthDescription.textContent =
+      "선택한 초성·모음·받침으로 한 글자를 만듭니다.";
+
+  }
+
+
+  if (
+    selectedLength === 2
+  ) {
+
+    lengthDescription.textContent =
+      "선택한 초성·모음·받침을 이용해 두 글자를 무작위로 조합합니다.";
+
+  }
+
+
+  if (
+    selectedLength === 3
+  ) {
+
+    lengthDescription.textContent =
+      "선택한 초성·모음·받침을 이용해 세 글자를 무작위로 조합합니다.";
+
+  }
+
+
+  updateLetterSize();
+
+  updateSelectionSummary();
+
+}
+
+
+/* ============================================================
+   글자 크기
+============================================================ */
+
+function updateLetterSize() {
+
+  letterElement.classList.remove(
+    "single-letter"
+  );
+
+
+  letterElement.classList.remove(
+    "three-letter"
+  );
+
+
+  if (
+    selectedLength === 1
+  ) {
+
+    letterElement.classList.add(
+      "single-letter"
+    );
+
+  }
+
+
+  if (
+    selectedLength === 3
+  ) {
+
+    letterElement.classList.add(
+      "three-letter"
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   선택 정보
 ============================================================ */
 
 function updateSelectionSummary() {
@@ -2148,7 +2274,11 @@ function updateSelectionSummary() {
           .join(" ");
 
 
-  const total =
+  /*
+    한 음절에서 가능한 조합
+  */
+
+  const oneSyllableCount =
 
     selectedConsonants.length *
 
@@ -2157,14 +2287,155 @@ function updateSelectionSummary() {
     selectedFinals.length;
 
 
+  syllableCombinationCount.textContent =
+    `${oneSyllableCount.toLocaleString()}개`;
+
+
+  /*
+    2글자라면 N²
+    3글자라면 N³
+  */
+
+  const totalCombinationCount =
+
+    Math.pow(
+      oneSyllableCount,
+      selectedLength
+    );
+
+
   combinationCount.textContent =
-    `${total.toLocaleString()}개`;
+    `${formatLargeNumber(totalCombinationCount)}개`;
 
 }
 
 
 /* ============================================================
-   9. 선택된 자모로 무작위 조합
+   큰 숫자 표시
+============================================================ */
+
+function formatLargeNumber(
+  number
+) {
+
+  if (
+    !Number.isFinite(number)
+  ) {
+
+    return "매우 많음";
+
+  }
+
+
+  if (
+    number <
+    1000000000
+  ) {
+
+    return number.toLocaleString();
+
+  }
+
+
+  return number.toLocaleString(
+    "ko-KR",
+    {
+      maximumFractionDigits: 0
+    }
+  );
+
+}
+
+
+/* ============================================================
+   한 음절 무작위 생성
+============================================================ */
+
+function generateRandomSyllable() {
+
+  const selectedConsonants =
+    getSelectedConsonants();
+
+
+  const selectedVowels =
+    getSelectedVowels();
+
+
+  const selectedFinals =
+    getSelectedFinals();
+
+
+  const consonant =
+
+    selectedConsonants[
+      Math.floor(
+        Math.random() *
+        selectedConsonants.length
+      )
+    ];
+
+
+  const vowel =
+
+    selectedVowels[
+      Math.floor(
+        Math.random() *
+        selectedVowels.length
+      )
+    ];
+
+
+  const final =
+
+    selectedFinals[
+      Math.floor(
+        Math.random() *
+        selectedFinals.length
+      )
+    ];
+
+
+  const character =
+
+    makeHangul(
+      consonant.index,
+      vowel.index,
+      final.index
+    );
+
+
+  return {
+
+    char:
+      character,
+
+    consonant:
+      consonant.char,
+
+    vowel:
+      vowel.char,
+
+    final:
+      final.index === 0
+        ? ""
+        : final.char,
+
+    choIndex:
+      consonant.index,
+
+    jungIndex:
+      vowel.index,
+
+    jongIndex:
+      final.index
+
+  };
+
+}
+
+
+/* ============================================================
+   1 / 2 / 3글자 조합 생성
 ============================================================ */
 
 function generateRandomItem() {
@@ -2212,7 +2483,7 @@ function generateRandomItem() {
   ) {
 
     alert(
-      "받침을 선택해 주세요.\n\n받침 없는 글자를 연습하려면 '없음'을 선택하면 됩니다."
+      "받침을 선택해 주세요.\n\n받침이 없는 글자를 연습하려면 '없음'을 선택하세요."
     );
 
     return null;
@@ -2220,76 +2491,50 @@ function generateRandomItem() {
   }
 
 
-  let item = null;
+  let result = null;
 
   let tryCount = 0;
 
 
   do {
 
-    const consonant =
-
-      selectedConsonants[
-        Math.floor(
-          Math.random() *
-          selectedConsonants.length
-        )
-      ];
+    const syllables =
+      [];
 
 
-    const vowel =
+    for (
+      let i = 0;
+      i < selectedLength;
+      i++
+    ) {
 
-      selectedVowels[
-        Math.floor(
-          Math.random() *
-          selectedVowels.length
-        )
-      ];
-
-
-    const final =
-
-      selectedFinals[
-        Math.floor(
-          Math.random() *
-          selectedFinals.length
-        )
-      ];
-
-
-    const character =
-
-      makeHangul(
-        consonant.index,
-        vowel.index,
-        final.index
+      syllables.push(
+        generateRandomSyllable()
       );
 
+    }
 
-    item = {
+
+    const text =
+
+      syllables
+        .map(
+          item =>
+            item.char
+        )
+        .join("");
+
+
+    result = {
 
       char:
-        character,
+        text,
 
-      consonant:
-        consonant.char,
+      syllables:
+        syllables,
 
-      vowel:
-        vowel.char,
-
-      final:
-        final.index === 0
-          ? ""
-          : final.char,
-
-      choIndex:
-        consonant.index,
-
-      jungIndex:
-        vowel.index,
-
-      jongIndex:
-        final.index
+      length:
+        selectedLength
 
     };
 
@@ -2299,25 +2544,83 @@ function generateRandomItem() {
 
   } while (
 
-    item.char ===
+    result.char ===
       previousCharacter &&
 
-    tryCount < 40
+    tryCount < 50
 
   );
 
 
   previousCharacter =
-    item.char;
+    result.char;
 
 
-  return item;
+  return result;
 
 }
 
 
 /* ============================================================
-   10. 문제 표시
+   조합 설명 만들기
+============================================================ */
+
+function buildCompositionHTML(
+  item
+) {
+
+  if (
+    !item ||
+    !item.syllables
+  ) {
+
+    return "";
+
+  }
+
+
+  return item.syllables
+
+    .map(
+      syllable => {
+
+        if (
+          syllable.final
+        ) {
+
+          return `
+            <span class="composition-part">
+              ${syllable.consonant}
+              +
+              ${syllable.vowel}
+              +
+              ${syllable.final}
+            </span>
+          `;
+
+        }
+
+
+        return `
+          <span class="composition-part">
+            ${syllable.consonant}
+            +
+            ${syllable.vowel}
+          </span>
+        `;
+
+      }
+    )
+
+    .join(
+      `<span class="composition-divider"> / </span>`
+    );
+
+}
+
+
+/* ============================================================
+   문제 표시
 ============================================================ */
 
 function displayItem(
@@ -2335,21 +2638,10 @@ function displayItem(
     item.char;
 
 
-  if (
-    item.final
-  ) {
-
-    compositionElement.textContent =
-
-      `${item.consonant} + ${item.vowel} + ${item.final}`;
-
-  } else {
-
-    compositionElement.textContent =
-
-      `${item.consonant} + ${item.vowel}`;
-
-  }
+  compositionElement.innerHTML =
+    buildCompositionHTML(
+      item
+    );
 
 
   updateCompositionVisibility();
@@ -2358,7 +2650,7 @@ function displayItem(
 
 
 /* ============================================================
-   11. 다음 문제
+   다음 문제
 ============================================================ */
 
 function nextItem() {
@@ -2372,9 +2664,6 @@ function nextItem() {
   }
 
 
-  /*
-    오답 연습
-  */
   if (
     reviewMode
   ) {
@@ -2418,7 +2707,7 @@ function nextItem() {
 
 
 /* ============================================================
-   12. 맞음
+   맞음
 ============================================================ */
 
 function handleCorrect() {
@@ -2438,10 +2727,6 @@ function handleCorrect() {
   attempts++;
 
 
-  /*
-    오답 연습에서는
-    맞힌 글자를 목록에서 제거
-  */
   if (
     reviewMode
   ) {
@@ -2478,7 +2763,7 @@ function handleCorrect() {
 
 
 /* ============================================================
-   13. 틀림
+   틀림
 ============================================================ */
 
 function handleWrong() {
@@ -2498,11 +2783,6 @@ function handleWrong() {
   wrongCount++;
 
 
-  /*
-    오답 복습 도중 다시 틀린 경우
-
-    해당 글자를 맨 뒤로 이동
-  */
   if (
     reviewMode
   ) {
@@ -2530,10 +2810,6 @@ function handleWrong() {
 
   }
 
-
-  /*
-    일반 학습 오답 저장
-  */
 
   if (
     wrongHistory.has(
@@ -2574,7 +2850,7 @@ function handleWrong() {
 
 
 /* ============================================================
-   14. 기록 업데이트
+   기록
 ============================================================ */
 
 function updateScoreBoard() {
@@ -2607,14 +2883,10 @@ function updateScoreBoard() {
 
 
 /* ============================================================
-   15. 새 연습 시작
+   새 연습
 ============================================================ */
 
 function startNewPractice() {
-
-  /*
-    선택 검증
-  */
 
   if (
     getSelectedConsonants()
@@ -2661,10 +2933,6 @@ function startNewPractice() {
   closeModal();
 
 
-  /*
-    상태 초기화
-  */
-
   correctCount =
     0;
 
@@ -2700,10 +2968,6 @@ function startNewPractice() {
     true;
 
 
-  /*
-    버튼 상태
-  */
-
   correctButton.disabled =
     false;
 
@@ -2717,7 +2981,7 @@ function startNewPractice() {
 
 
   modeBadge.textContent =
-    "선택 글자 연습";
+    `${selectedLength}글자 조합 연습`;
 
 
   updateScoreBoard();
@@ -2730,7 +2994,7 @@ function startNewPractice() {
 
 
 /* ============================================================
-   16. 연습 종료
+   연습 종료
 ============================================================ */
 
 function finishPractice() {
@@ -2767,14 +3031,14 @@ function finishPractice() {
   showResult(
     "📊",
     "연습 결과",
-    "연습을 마쳤습니다."
+    `${selectedLength}글자 읽기 연습을 마쳤습니다.`
   );
 
 }
 
 
 /* ============================================================
-   17. 오답 복습
+   오답 복습
 ============================================================ */
 
 function startWrongReview() {
@@ -2846,7 +3110,7 @@ function startWrongReview() {
 
 
   modeBadge.textContent =
-    `오답 연습 ${reviewQueue.length}글자`;
+    `오답 연습 ${reviewQueue.length}개`;
 
 
   updateScoreBoard();
@@ -2857,7 +3121,7 @@ function startWrongReview() {
 
 
 /* ============================================================
-   18. 오답 복습 완료
+   오답 복습 완료
 ============================================================ */
 
 function finishReview() {
@@ -2898,7 +3162,7 @@ function finishReview() {
 
 
 /* ============================================================
-   19. 오답 목록
+   오답 목록
 ============================================================ */
 
 function updateWrongList() {
@@ -2976,7 +3240,7 @@ function updateWrongList() {
 
 
 /* ============================================================
-   20. 결과 표시
+   결과창
 ============================================================ */
 
 function showResult(
@@ -3038,11 +3302,6 @@ function showResult(
     `${accuracy}%`;
 
 
-  /*
-    오답이 있을 때만
-    오답 복습 버튼 표시
-  */
-
   if (
     !reviewMode &&
     wrongHistory.size > 0
@@ -3076,7 +3335,7 @@ function closeModal() {
 
 
 /* ============================================================
-   21. 자모 조합 표시
+   조합 표시
 ============================================================ */
 
 function updateCompositionVisibility() {
@@ -3095,9 +3354,7 @@ function updateCompositionVisibility() {
     compositionButton.textContent =
       "조합 숨기기";
 
-
   } else {
-
 
     compositionElement
       .classList
@@ -3115,7 +3372,7 @@ function updateCompositionVisibility() {
 
 
 /* ============================================================
-   22. 음성
+   음성
 ============================================================ */
 
 function speakCurrentCharacter() {
@@ -3162,7 +3419,7 @@ function speakCurrentCharacter() {
 
 
   utterance.rate =
-    0.7;
+    0.65;
 
 
   utterance.pitch =
@@ -3179,7 +3436,7 @@ function speakCurrentCharacter() {
 
 
 /* ============================================================
-   23. 체크박스 제어
+   체크박스 제어
 ============================================================ */
 
 function setCheckedIndexes(
@@ -3263,7 +3520,7 @@ function clearAll(
 
 
 /* ============================================================
-   24. 배열 섞기
+   배열 섞기
 ============================================================ */
 
 function shuffle(
@@ -3304,11 +3561,30 @@ function shuffle(
 
 
 /* ============================================================
-   25. 이벤트
+   글자 수 버튼
 ============================================================ */
 
+lengthButtons.forEach(
+  button => {
 
-/* 맞음 / 틀림 */
+    button.addEventListener(
+      "click",
+      () => {
+
+        setWordLength(
+          button.dataset.length
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ============================================================
+   맞음 / 틀림
+============================================================ */
 
 correctButton.addEventListener(
   "click",
@@ -3322,7 +3598,9 @@ wrongButton.addEventListener(
 );
 
 
-/* 시작 / 종료 */
+/* ============================================================
+   시작 / 종료
+============================================================ */
 
 startButton.addEventListener(
   "click",
@@ -3336,7 +3614,9 @@ finishButton.addEventListener(
 );
 
 
-/* 오답 */
+/* ============================================================
+   오답
+============================================================ */
 
 reviewButton.addEventListener(
   "click",
@@ -3344,7 +3624,9 @@ reviewButton.addEventListener(
 );
 
 
-/* 조합 */
+/* ============================================================
+   조합 보기
+============================================================ */
 
 compositionButton.addEventListener(
   "click",
@@ -3360,7 +3642,9 @@ compositionButton.addEventListener(
 );
 
 
-/* 소리 */
+/* ============================================================
+   음성
+============================================================ */
 
 speakButton.addEventListener(
   "click",
@@ -3369,7 +3653,7 @@ speakButton.addEventListener(
 
 
 /* ============================================================
-   초성 버튼
+   초성
 ============================================================ */
 
 document
@@ -3422,7 +3706,7 @@ document
 
 
 /* ============================================================
-   모음 버튼
+   모음
 ============================================================ */
 
 document
@@ -3475,13 +3759,8 @@ document
 
 
 /* ============================================================
-   받침 버튼
+   받침
 ============================================================ */
-
-
-/*
-  받침 없음만 선택
-*/
 
 document
   .getElementById(
@@ -3500,12 +3779,6 @@ document
   );
 
 
-/*
-  기본 받침
-
-  받침 없음은 제외
-*/
-
 document
   .getElementById(
     "basicFinals"
@@ -3522,10 +3795,6 @@ document
     }
   );
 
-
-/*
-  홑받침
-*/
 
 document
   .getElementById(
@@ -3544,12 +3813,6 @@ document
   );
 
 
-/*
-  받침 전체
-
-  여기서는 '없음'까지 포함
-*/
-
 document
   .getElementById(
     "allFinals"
@@ -3565,10 +3828,6 @@ document
     }
   );
 
-
-/*
-  전체 해제
-*/
 
 document
   .getElementById(
@@ -3610,9 +3869,6 @@ closeModalButton.addEventListener(
 
 /* ============================================================
    키보드
-
-   → 맞음
-   ← 틀림
 ============================================================ */
 
 document.addEventListener(
@@ -3652,8 +3908,10 @@ document.addEventListener(
 
 
 /* ============================================================
-   초기 화면
+   초기화
 ============================================================ */
+
+setWordLength(1);
 
 updateSelectionSummary();
 

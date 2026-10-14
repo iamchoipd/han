@@ -38,7 +38,7 @@ button {
 }
 
 .app {
-  width: min(800px, 100%);
+  width: min(850px, 100%);
   min-height: 100vh;
   margin: 0 auto;
   padding: 16px;
@@ -56,10 +56,28 @@ button {
   border-radius: 22px;
   padding: 20px;
   margin-bottom: 14px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.055);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.055);
 }
 
-/* 점수 */
+.section-title {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.description {
+  margin-top: 11px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f5f7fb;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =============================================
+   점수
+============================================= */
 
 .score-board {
   display: grid;
@@ -86,29 +104,23 @@ button {
   font-weight: 900;
 }
 
-/* 제목 */
-
-.section-title {
-  margin-bottom: 12px;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-/* 연습 방식 */
+/* =============================================
+   연습 방식
+============================================= */
 
 .mode-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 9px;
 }
 
 .mode-button {
-  min-height: 63px;
+  min-height: 64px;
   border: 2px solid #e0e4eb;
   border-radius: 16px;
   background: white;
   color: #333;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 900;
 }
 
@@ -118,17 +130,9 @@ button {
   color: #315fc7;
 }
 
-.description {
-  margin-top: 11px;
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #f5f7fb;
-  color: #555;
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-/* 글자 수 */
+/* =============================================
+   글자 수
+============================================= */
 
 .length-buttons {
   display: grid;
@@ -140,8 +144,7 @@ button {
   min-height: 58px;
   border: 2px solid #e0e4eb;
   border-radius: 15px;
-  background: #fff;
-  color: #333;
+  background: white;
   font-size: 18px;
   font-weight: 900;
 }
@@ -157,7 +160,85 @@ button {
   cursor: default;
 }
 
-/* 문제 */
+/* =============================================
+   실제 단어 종류
+============================================= */
+
+.word-filter-card {
+  display: none;
+}
+
+.word-filter-card.show {
+  display: block;
+}
+
+.word-filter-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.word-filter-button {
+  min-height: 52px;
+  border: 2px solid #e0e4eb;
+  border-radius: 14px;
+  background: white;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.word-filter-button.selected {
+  border-color: #8d5bd1;
+  background: #f5efff;
+  color: #6935ac;
+}
+
+/* =============================================
+   문장 단계
+============================================= */
+
+.sentence-stage-card {
+  display: none;
+}
+
+.sentence-stage-card.show {
+  display: block;
+}
+
+.sentence-stage-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.sentence-stage-button {
+  min-height: 64px;
+  padding: 7px 4px;
+  border: 2px solid #e0e4eb;
+  border-radius: 14px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.sentence-stage-button.selected {
+  border-color: #19a76b;
+  background: #eafaf2;
+  color: #087c4b;
+}
+
+.stage-count {
+  display: block;
+  margin-top: 3px;
+  color: #777;
+  font-size: 11px;
+}
+
+/* =============================================
+   문제
+============================================= */
 
 .practice-card {
   text-align: center;
@@ -167,8 +248,8 @@ button {
 
 .mode-badge {
   display: inline-block;
-  padding: 7px 14px;
   margin-bottom: 8px;
+  padding: 7px 14px;
   border-radius: 999px;
   background: #eef3ff;
   color: #315fc7;
@@ -180,13 +261,12 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-
   min-height: 210px;
   padding: 10px;
 
   font-size: clamp(75px, 21vw, 160px);
-  line-height: 1.1;
-  letter-spacing: 0.03em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
   font-weight: 900;
 
   word-break: keep-all;
@@ -198,7 +278,33 @@ button {
 }
 
 .letter.three-letter {
-  font-size: clamp(63px, 18vw, 125px);
+  font-size: clamp(62px, 18vw, 125px);
+}
+
+.letter.sentence {
+  min-height: 190px;
+  padding: 20px 10px;
+  font-size: clamp(36px, 8vw, 65px);
+  line-height: 1.55;
+  letter-spacing: 0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sentence-word {
+  display: inline-block;
+  padding: 4px 7px;
+  border-radius: 12px;
+}
+
+.sentence-word.active {
+  background: #fff0a8;
+  outline: 3px solid #f4ca2d;
+}
+
+.sentence-divider {
+  color: #b5b5b5;
+  font-weight: 500;
 }
 
 .composition {
@@ -216,7 +322,6 @@ button {
 
 .composition-divider {
   color: #aaa;
-  margin: 0 2px;
 }
 
 .hidden {
@@ -241,7 +346,19 @@ button {
   font-weight: 800;
 }
 
-/* 맞음 틀림 */
+.highlight-button {
+  display: none;
+  background: #fff4c8;
+  color: #745600;
+}
+
+.highlight-button.show {
+  display: inline-block;
+}
+
+/* =============================================
+   맞음 틀림
+============================================= */
 
 .answer-buttons {
   display: grid;
@@ -264,7 +381,6 @@ button {
 
 .answer-button:disabled {
   opacity: 0.35;
-  cursor: default;
 }
 
 .correct-button {
@@ -277,7 +393,9 @@ button {
   color: #c32d2d;
 }
 
-/* 선택 영역 */
+/* =============================================
+   자모 설정
+============================================= */
 
 details {
   margin-bottom: 12px;
@@ -326,8 +444,6 @@ summary {
   color: #b52727;
 }
 
-/* 선택 칸 */
-
 .choice-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -353,12 +469,10 @@ summary {
 
   border: 2px solid #e3e6eb;
   border-radius: 13px;
-
   background: white;
 
   font-size: 21px;
   font-weight: 900;
-
   cursor: pointer;
   user-select: none;
 }
@@ -375,20 +489,22 @@ summary {
 
 .choice-item.double-final input:checked + label {
   border-style: solid;
+  border-color: #e0ad38;
   background: #fff7df;
-  color: #875b00;
-  border-color: #e1aa36;
+  color: #805700;
 }
 
 .no-final-item label {
-  font-size: 15px;
+  font-size: 14px;
 }
 
-/* 현재 선택 */
+/* =============================================
+   현재 선택
+============================================= */
 
 .selection-summary {
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .selection-row {
@@ -397,7 +513,7 @@ summary {
 
 .selection-label {
   display: inline-block;
-  min-width: 78px;
+  min-width: 92px;
   font-weight: 900;
 }
 
@@ -405,12 +521,14 @@ summary {
   color: #444;
 }
 
-.highlight {
+.highlight-text {
   color: #315fc7;
   font-weight: 900;
 }
 
-/* 시작 */
+/* =============================================
+   시작 종료
+============================================= */
 
 .main-buttons {
   display: grid;
@@ -459,7 +577,9 @@ summary {
   opacity: 0.4;
 }
 
-/* 오답 */
+/* =============================================
+   오답
+============================================= */
 
 .wrong-title {
   margin-bottom: 10px;
@@ -477,7 +597,7 @@ summary {
   border-radius: 12px;
   background: #fff0f0;
   color: #b72a2a;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 900;
 }
 
@@ -486,7 +606,9 @@ summary {
   font-size: 14px;
 }
 
-/* 결과 */
+/* =============================================
+   결과
+============================================= */
 
 .modal-backdrop {
   display: none;
@@ -575,7 +697,11 @@ summary {
   color: #333;
 }
 
-@media (max-width:480px) {
+/* =============================================
+   모바일
+============================================= */
+
+@media (max-width:600px) {
 
   .app {
     padding: 10px;
@@ -585,8 +711,21 @@ summary {
     padding: 15px;
   }
 
+  .mode-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .sentence-stage-buttons {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .letter {
     min-height: 165px;
+  }
+
+  .letter.sentence {
+    min-height: 180px;
+    font-size: clamp(31px, 9vw, 48px);
   }
 
   .choice-grid {
@@ -599,10 +738,6 @@ summary {
     font-size: 19px;
   }
 
-  .no-final-item label {
-    font-size: 13px;
-  }
-
   .answer-button {
     min-height: 75px;
   }
@@ -610,7 +745,9 @@ summary {
   .main-buttons {
     grid-template-columns: 1fr;
   }
+
 }
+
 </style>
 </head>
 
@@ -622,55 +759,25 @@ summary {
   한글 읽기 연습
 </h1>
 
-<!-- 기록 -->
+<!-- 점수 -->
 
 <section class="card">
 
   <div class="score-board">
 
     <div class="score-item">
-
-      <span class="score-label">
-        맞음
-      </span>
-
-      <strong
-        class="score-value"
-        id="correctCount"
-      >
-        0
-      </strong>
-
+      <span class="score-label">맞음</span>
+      <strong class="score-value" id="correctCount">0</strong>
     </div>
 
     <div class="score-item">
-
-      <span class="score-label">
-        시도
-      </span>
-
-      <strong
-        class="score-value"
-        id="attemptCount"
-      >
-        0
-      </strong>
-
+      <span class="score-label">시도</span>
+      <strong class="score-value" id="attemptCount">0</strong>
     </div>
 
     <div class="score-item">
-
-      <span class="score-label">
-        정답률
-      </span>
-
-      <strong
-        class="score-value"
-        id="accuracy"
-      >
-        0%
-      </strong>
-
+      <span class="score-label">정답률</span>
+      <strong class="score-value" id="accuracy">0%</strong>
     </div>
 
   </div>
@@ -703,12 +810,17 @@ summary {
       📖 실제 단어
     </button>
 
+    <button
+      class="mode-button"
+      id="sentenceModeButton"
+      type="button"
+    >
+      💬 3어절 문장
+    </button>
+
   </div>
 
-  <div
-    class="description"
-    id="modeDescription"
-  >
+  <div class="description" id="modeDescription">
     선택한 초성·모음·받침을 무작위로 조합합니다.
   </div>
 
@@ -716,7 +828,7 @@ summary {
 
 <!-- 글자 수 -->
 
-<section class="card">
+<section class="card" id="lengthCard">
 
   <div class="section-title">
     🔢 글자 수
@@ -750,11 +862,123 @@ summary {
 
   </div>
 
+  <div class="description" id="lengthDescription">
+    한 글자를 만들어 읽습니다.
+  </div>
+
+</section>
+
+<!-- 실제 단어 필터 -->
+
+<section
+  class="card word-filter-card"
+  id="wordFilterCard"
+>
+
+  <div class="section-title">
+    📖 실제 단어 종류
+  </div>
+
+  <div class="word-filter-buttons">
+
+    <button
+      class="word-filter-button selected"
+      data-filter="all"
+      type="button"
+    >
+      전체 단어
+    </button>
+
+    <button
+      class="word-filter-button"
+      data-filter="compound"
+      type="button"
+    >
+      이중모음
+    </button>
+
+    <button
+      class="word-filter-button"
+      data-filter="double"
+      type="button"
+    >
+      겹받침
+    </button>
+
+  </div>
+
+</section>
+
+<!-- 문장 단계 -->
+
+<section
+  class="card sentence-stage-card"
+  id="sentenceStageCard"
+>
+
+  <div class="section-title">
+    💬 문장 단계
+  </div>
+
+  <div class="sentence-stage-buttons">
+
+    <button
+      class="sentence-stage-button selected"
+      data-stage="easy"
+      type="button"
+    >
+      1단계
+      <br>쉬운 문장
+      <span class="stage-count">36문장</span>
+    </button>
+
+    <button
+      class="sentence-stage-button"
+      data-stage="final"
+      type="button"
+    >
+      2단계
+      <br>기본 받침
+      <span class="stage-count">36문장</span>
+    </button>
+
+    <button
+      class="sentence-stage-button"
+      data-stage="compound"
+      type="button"
+    >
+      3단계
+      <br>이중모음
+      <span class="stage-count">36문장</span>
+    </button>
+
+    <button
+      class="sentence-stage-button"
+      data-stage="double"
+      type="button"
+    >
+      4단계
+      <br>겹받침
+      <span class="stage-count">36문장</span>
+    </button>
+
+    <button
+      class="sentence-stage-button"
+      data-stage="mixed"
+      type="button"
+    >
+      5단계
+      <br>종합
+      <span class="stage-count">36문장</span>
+    </button>
+
+  </div>
+
   <div
     class="description"
-    id="lengthDescription"
+    id="sentenceStageDescription"
   >
-    한 글자를 만들어 읽습니다.
+    짧고 익숙한 낱말로 이루어진 3어절 문장을 읽습니다.
   </div>
 
 </section>
@@ -795,6 +1019,14 @@ summary {
     </button>
 
     <button
+      class="small-button highlight-button"
+      id="highlightButton"
+      type="button"
+    >
+      👉 한 어절씩 강조
+    </button>
+
+    <button
       class="small-button"
       id="speakButton"
       type="button"
@@ -828,7 +1060,9 @@ summary {
 
 </section>
 
-<!-- 초성 -->
+<!-- 자모 설정 -->
+
+<div id="jamoSettings">
 
 <details open>
 
@@ -840,17 +1074,11 @@ summary {
 
     <div class="mini-actions">
 
-      <button
-        id="basicConsonants"
-        type="button"
-      >
+      <button id="basicConsonants" type="button">
         기본 자음
       </button>
 
-      <button
-        id="allConsonants"
-        type="button"
-      >
+      <button id="allConsonants" type="button">
         전체 선택
       </button>
 
@@ -873,8 +1101,6 @@ summary {
 
 </details>
 
-<!-- 모음 -->
-
 <details open>
 
   <summary>
@@ -885,17 +1111,11 @@ summary {
 
     <div class="mini-actions">
 
-      <button
-        id="basicVowels"
-        type="button"
-      >
+      <button id="basicVowels" type="button">
         기본 모음
       </button>
 
-      <button
-        id="allVowels"
-        type="button"
-      >
+      <button id="allVowels" type="button">
         전체 선택
       </button>
 
@@ -918,8 +1138,6 @@ summary {
 
 </details>
 
-<!-- 받침 -->
-
 <details open>
 
   <summary>
@@ -930,24 +1148,15 @@ summary {
 
     <div class="mini-actions">
 
-      <button
-        id="noFinalOnly"
-        type="button"
-      >
+      <button id="noFinalOnly" type="button">
         받침 없음
       </button>
 
-      <button
-        id="basicFinals"
-        type="button"
-      >
+      <button id="basicFinals" type="button">
         기본 받침
       </button>
 
-      <button
-        id="simpleFinals"
-        type="button"
-      >
+      <button id="simpleFinals" type="button">
         홑받침 전체
       </button>
 
@@ -959,10 +1168,7 @@ summary {
         겹받침 연습
       </button>
 
-      <button
-        id="allFinals"
-        type="button"
-      >
+      <button id="allFinals" type="button">
         전체 받침
       </button>
 
@@ -985,6 +1191,8 @@ summary {
 
 </details>
 
+</div>
+
 <!-- 현재 선택 -->
 
 <section class="card">
@@ -993,7 +1201,7 @@ summary {
     🔎 현재 선택
   </div>
 
-  <div class="selection-summary">
+  <div id="jamoSummary" class="selection-summary">
 
     <div class="selection-row">
 
@@ -1002,7 +1210,7 @@ summary {
       </span>
 
       <strong
-        class="highlight"
+        class="highlight-text"
         id="selectedModeText"
       >
         무작위 조합
@@ -1017,7 +1225,7 @@ summary {
       </span>
 
       <strong
-        class="highlight"
+        class="highlight-text"
         id="selectedLengthText"
       >
         1글자
@@ -1026,42 +1234,18 @@ summary {
     </div>
 
     <div class="selection-row">
-
-      <span class="selection-label">
-        초성
-      </span>
-
-      <span
-        class="selection-value"
-        id="selectedConsonantsText"
-      ></span>
-
+      <span class="selection-label">초성</span>
+      <span id="selectedConsonantsText"></span>
     </div>
 
     <div class="selection-row">
-
-      <span class="selection-label">
-        모음
-      </span>
-
-      <span
-        class="selection-value"
-        id="selectedVowelsText"
-      ></span>
-
+      <span class="selection-label">모음</span>
+      <span id="selectedVowelsText"></span>
     </div>
 
     <div class="selection-row">
-
-      <span class="selection-label">
-        받침
-      </span>
-
-      <span
-        class="selection-value"
-        id="selectedFinalsText"
-      ></span>
-
+      <span class="selection-label">받침</span>
+      <span id="selectedFinalsText"></span>
     </div>
 
     <div class="selection-row">
@@ -1074,7 +1258,7 @@ summary {
       </span>
 
       <strong
-        class="highlight"
+        class="highlight-text"
         id="combinationCount"
       >
         0개
@@ -1084,9 +1268,56 @@ summary {
 
   </div>
 
+  <div
+    id="sentenceSummary"
+    class="selection-summary"
+    style="display:none;"
+  >
+
+    <div class="selection-row">
+
+      <span class="selection-label">
+        연습 방식
+      </span>
+
+      <strong class="highlight-text">
+        3어절 문장
+      </strong>
+
+    </div>
+
+    <div class="selection-row">
+
+      <span class="selection-label">
+        문장 단계
+      </span>
+
+      <strong
+        class="highlight-text"
+        id="sentenceStageName"
+      >
+        1단계 쉬운 문장
+      </strong>
+
+    </div>
+
+    <div class="selection-row">
+
+      <span class="selection-label">
+        문장 수
+      </span>
+
+      <strong id="sentenceCount">
+        36문장
+      </strong>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- 시작 -->
+<!-- 시작 종료 -->
 
 <div class="main-buttons">
 
@@ -1115,7 +1346,7 @@ summary {
   type="button"
   disabled
 >
-  🔁 틀린 글자 다시 연습
+  🔁 틀린 항목 다시 연습
 </button>
 
 <!-- 오답 -->
@@ -1126,7 +1357,7 @@ summary {
 >
 
   <div class="wrong-title">
-    ❌ 틀린 글자
+    ❌ 틀린 항목
   </div>
 
   <div
@@ -1135,7 +1366,7 @@ summary {
   >
 
     <span class="empty-text">
-      아직 틀린 글자가 없습니다.
+      아직 틀린 항목이 없습니다.
     </span>
 
   </div>
@@ -1144,127 +1375,87 @@ summary {
 
 </main>
 
-<!-- 결과 -->
+<!-- 결과창 -->
 
 <div
   class="modal-backdrop"
   id="resultModal"
 >
 
-  <div class="modal">
+<div class="modal">
 
-    <div
-      class="modal-icon"
-      id="modalIcon"
-    >
-      📊
+  <div
+    class="modal-icon"
+    id="modalIcon"
+  >
+    📊
+  </div>
+
+  <h2 id="modalTitle">
+    연습 결과
+  </h2>
+
+  <p id="modalMessage">
+    연습을 마쳤습니다.
+  </p>
+
+  <div class="result-grid">
+
+    <div class="result-box">
+      <span class="result-label">맞은 수</span>
+      <strong class="result-value" id="resultCorrect">0</strong>
     </div>
 
-    <h2 id="modalTitle">
-      연습 결과
-    </h2>
-
-    <p id="modalMessage">
-      연습을 마쳤습니다.
-    </p>
-
-    <div class="result-grid">
-
-      <div class="result-box">
-
-        <span class="result-label">
-          맞은 수
-        </span>
-
-        <strong
-          class="result-value"
-          id="resultCorrect"
-        >
-          0
-        </strong>
-
-      </div>
-
-      <div class="result-box">
-
-        <span class="result-label">
-          전체 시도
-        </span>
-
-        <strong
-          class="result-value"
-          id="resultAttempts"
-        >
-          0
-        </strong>
-
-      </div>
-
-      <div class="result-box">
-
-        <span class="result-label">
-          틀린 횟수
-        </span>
-
-        <strong
-          class="result-value"
-          id="resultWrong"
-        >
-          0
-        </strong>
-
-      </div>
-
-      <div class="result-box">
-
-        <span class="result-label">
-          정답률
-        </span>
-
-        <strong
-          class="result-value"
-          id="resultAccuracy"
-        >
-          0%
-        </strong>
-
-      </div>
-
+    <div class="result-box">
+      <span class="result-label">전체 시도</span>
+      <strong class="result-value" id="resultAttempts">0</strong>
     </div>
 
-    <button
-      class="modal-button secondary-modal-button"
-      id="modalReviewButton"
-      type="button"
-    >
-      🔁 오답 다시 연습
-    </button>
+    <div class="result-box">
+      <span class="result-label">틀린 횟수</span>
+      <strong class="result-value" id="resultWrong">0</strong>
+    </div>
 
-    <button
-      class="modal-button primary-modal-button"
-      id="modalNewButton"
-      type="button"
-    >
-      ▶ 새 연습 시작
-    </button>
-
-    <button
-      class="modal-button gray-modal-button"
-      id="closeModalButton"
-      type="button"
-    >
-      결과 닫기
-    </button>
+    <div class="result-box">
+      <span class="result-label">정답률</span>
+      <strong class="result-value" id="resultAccuracy">0%</strong>
+    </div>
 
   </div>
+
+  <button
+    class="modal-button secondary-modal-button"
+    id="modalReviewButton"
+    type="button"
+  >
+    🔁 오답 다시 연습
+  </button>
+
+  <button
+    class="modal-button primary-modal-button"
+    id="modalNewButton"
+    type="button"
+  >
+    ▶ 새 연습 시작
+  </button>
+
+  <button
+    class="modal-button gray-modal-button"
+    id="closeModalButton"
+    type="button"
+  >
+    결과 닫기
+  </button>
+
+</div>
 
 </div>
 
 <script>
 
-/* =========================================================
-   초성
-========================================================= */
+/* ============================================================
+   1. 한글 데이터
+============================================================ */
 
 const consonants = [
 
@@ -1293,10 +1484,6 @@ const consonants = [
 
 ];
 
-
-/* =========================================================
-   모음
-========================================================= */
 
 const vowels = [
 
@@ -1331,12 +1518,6 @@ const vowels = [
 
 ];
 
-
-/* =========================================================
-   받침
-
-   double = 겹받침
-========================================================= */
 
 const finals = [
 
@@ -1387,607 +1568,540 @@ const finals = [
 ];
 
 
-/* =========================================================
-   실제 단어
-
-   이중모음 + 겹받침 단어 확대
-========================================================= */
+/* ============================================================
+   2. 실제 단어 데이터
+============================================================ */
 
 const wordBank = {
 
-2: [
-
-/* 받침 없는 쉬운 말 */
-
-"가게",
-"가위",
-"가지",
-"개미",
-"고기",
-"고래",
-"고무",
-"고추",
-"구두",
-"기차",
-
-"나무",
-"나비",
-"나라",
-"노래",
-
-"다리",
-"두부",
-
-"라면",
-
-"마루",
-"모자",
-
-"바다",
-"바지",
-
-"사과",
-"소리",
-
-"아기",
-"아빠",
-"엄마",
-
-"여우",
-"오리",
-"오이",
-"우유",
-"우산",
-"의자",
-
-"자두",
-"치마",
-"토끼",
-"파리",
-"포도",
-"하마",
-"호수",
-
-
-/* 기본 받침 */
-
-"가방",
-"감자",
-"구름",
-"국수",
-
-"마늘",
-
-"배추",
-"버스",
-
-"사슴",
-"소금",
-"수박",
-
-"학교",
-"친구",
-"연필",
-"공책",
-"책상",
-"창문",
-
-"신발",
-"양말",
-"손톱",
-
-"얼굴",
-"머리",
-"꼬리",
-"허리",
-"눈물",
-
-"하늘",
-"바람",
-"구슬",
-"장갑",
-
-"계란",
-"종이",
-
-"아침",
-"저녁",
-
-"시장",
-"공원",
-"병원",
-"약국",
-
-"사진",
-"그림",
-"노트",
-"칠판",
-"교실",
-"교문",
-
-"운동",
-"놀이",
-"장난",
-"웃음",
-
-"이름",
-"마음",
-"사랑",
-
-"가족",
-"동생",
-"언니",
-"누나",
-"오빠",
-
-"딸기",
-"참외",
-
-"김밥",
-"떡국",
-"만두",
-
-"과자",
-"사탕",
-
-"빵집",
-
-"냄비",
-"접시",
-"수저",
-
-"시계",
-"인형",
-"화분",
-
-"동물",
-"선물",
-
-"겨울",
-"여름",
-"가을",
-
-"새우",
-"멸치",
-"달걀",
-
-"우물",
-"모래",
-"유리",
-
-"주스",
-"치즈",
-
-"지도",
-"도로",
-"마을",
-
-"농부",
-"어부",
-
-
-/* 이중모음 */
-
-"과일",
-"과자",
-"과학",
-
-"돼지",
-
-"외투",
-"외국",
-
-"회사",
-"회의",
-
-"교회",
-
-"의자",
-"의사",
-
-"위험",
-"위로",
-
-"귀신",
-"귀걸",
-
-"원숭",
-"원두",
-
-"월요일",
-
-"웨딩",
-
-"괴물",
-
-"왜요",
-
-"화분",
-"화장",
-
-"왕자",
-
-"쉬는",
-
-"쥐약",
-
-
-/* =========================================
-   겹받침 ㄵ
-========================================= */
-
-"앉다",
-"얹다",
-
-
-/* =========================================
-   겹받침 ㄶ
-========================================= */
-
-"않다",
-"많다",
-
-
-/* =========================================
-   겹받침 ㄺ
-========================================= */
-
-"읽다",
-"읽기",
-"맑다",
-"맑은",
-"밝다",
-"밝은",
-"닭장",
-"닭발",
-
-
-/* =========================================
-   겹받침 ㄻ
-========================================= */
-
-"젊다",
-"젊은",
-"삶은",
-
-
-/* =========================================
-   겹받침 ㄼ
-========================================= */
-
-"넓다",
-"넓은",
-"넓이",
-
-"짧다",
-"짧은",
-
-"얇다",
-"얇은",
-
-"밟다",
-
-
-/* =========================================
-   겹받침 ㄾ
-========================================= */
-
-"핥다",
-"훑다",
-
-
-/* =========================================
-   겹받침 ㄿ
-========================================= */
-
-"읊다",
-
-
-/* =========================================
-   겹받침 ㅀ
-========================================= */
-
-"싫다",
-"옳다",
-"끓다",
-"뚫다",
-
-
-/* =========================================
-   겹받침 ㅄ
-========================================= */
-
-"없다",
-"없어",
-"값진",
-"값싼",
-
-
-/*
-  ㄳ·ㄽ은 실제 사용 빈도가 낮아
-  조금 어려운 낱말도 포함
-*/
-
-"외곬"
-
-],
-
-
-3: [
-
-/* 쉬운 실제 단어 */
-
-"고구마",
-"바나나",
-
-"자동차",
-"자전거",
-"비행기",
-
-"어린이",
-
-"강아지",
-"고양이",
-"송아지",
-"병아리",
-
-"개구리",
-"다람쥐",
-"코끼리",
-"호랑이",
-"원숭이",
-
-"오징어",
-"거북이",
-
-"도토리",
-"잠자리",
-
-"무지개",
-"소나무",
-"나뭇잎",
-
-"놀이터",
-"운동장",
-
-"선생님",
-
-"지우개",
-"색연필",
-
-"우체국",
-"경찰서",
-"소방서",
-
-"도서관",
-"미술관",
-"박물관",
-"동물원",
-
-"화장실",
-
-"교과서",
-"시간표",
-"준비물",
-
-"실내화",
-
-"급식실",
-"보건실",
-"교무실",
-
-"안내문",
-
-"떡볶이",
-"비빔밥",
-"미역국",
-"된장국",
-
-"복숭아",
-"토마토",
-
-"냉장고",
-"세탁기",
-"청소기",
-"선풍기",
-
-"컴퓨터",
-"전화기",
-
-"장난감",
-
-"민들레",
-"개나리",
-"진달래",
-"무궁화",
-"나팔꽃",
-
-"눈사람",
-
-"물고기",
-"개울물",
-
-"소나기",
-
-"줄넘기",
-"달리기",
-
-"그림책",
-"이야기",
-"글쓰기",
-
-"노래방",
-"기차역",
-
-"운동화",
-
-"양배추",
-"옥수수",
-
-"호박죽",
-"참기름",
-"주먹밥",
-"김치국",
-"콩나물",
-
-"손수건",
-"꽃다발",
-"종이컵",
-
-"휴지통",
-"쓰레기",
-"빗자루",
-
-
-/* 이중모음 */
-
-"과일주스",
-"과학자",
-
-"외국인",
-
-"회의실",
-
-"교회당",
-
-"의사선생",
-
-"위험물",
-
-"귀걸이",
-
-"원숭이",
-
-"화요일",
-
-"수요일",
-
-"월요일",
-
-"체육관",
-
-"피아노",
-
-"우체국",
-
-"유치원",
-
-"요리사",
-
-
-/* =========================================
-   겹받침 단어
-========================================= */
-
-
-/* ㄵ */
-
-"앉아요",
-"앉아서",
-"얹어요",
-
-
-/* ㄶ */
-
-"많아요",
-"많아서",
-
-"않아요",
-"않아서",
-
-
-/* ㄺ */
-
-"읽어요",
-"읽어서",
-
-"맑아요",
-"맑아서",
-
-"밝아요",
-"밝아서",
-
-"닭고기",
-
-
-/* ㄻ */
-
-"젊어요",
-"젊어서",
-
-
-/* ㄼ */
-
-"넓어요",
-"넓어서",
-
-"짧아요",
-"짧아서",
-
-"얇아요",
-"얇아서",
-
-"밟아요",
-
-
-/* ㄾ */
-
-"핥아요",
-"훑어요",
-
-
-/* ㄿ */
-
-"읊어요",
-
-
-/* ㅀ */
-
-"싫어요",
-"싫어서",
-
-"옳아요",
-
-"끓어요",
-"끓이다",
-
-"뚫어요",
-
-
-/* ㅄ */
-
-"없어요",
-"없어서",
-
-"값어치",
-
-
-/* ㄳ */
-
-"넋두리"
-
-]
+  2: [
+
+    "가게",
+    "가방",
+    "가위",
+    "가지",
+    "감자",
+    "개미",
+    "거미",
+    "고기",
+    "고래",
+    "고무",
+    "고추",
+    "구두",
+    "구름",
+    "국수",
+    "기차",
+
+    "나무",
+    "나비",
+    "나라",
+    "노래",
+
+    "다리",
+    "달걀",
+    "두부",
+
+    "라면",
+
+    "마늘",
+    "마루",
+    "마음",
+    "마을",
+    "모자",
+    "모래",
+
+    "바다",
+    "바람",
+    "바지",
+    "배추",
+    "버스",
+
+    "사과",
+    "사슴",
+    "사탕",
+    "소금",
+    "소리",
+    "수박",
+
+    "아기",
+    "아빠",
+    "아침",
+    "엄마",
+
+    "여우",
+    "여름",
+    "오리",
+    "오이",
+    "우유",
+    "우산",
+
+    "자두",
+    "장갑",
+
+    "참외",
+    "치마",
+    "치즈",
+
+    "토끼",
+
+    "포도",
+
+    "학교",
+    "하늘",
+    "하마",
+    "호수",
+
+    "연필",
+    "공책",
+    "책상",
+    "창문",
+    "친구",
+
+    "과자",
+    "과일",
+    "과학",
+
+    "돼지",
+    "외투",
+    "외국",
+    "회사",
+    "회의",
+    "교회",
+
+    "의사",
+    "의자",
+
+    "귀신",
+    "원두",
+    "괴물",
+
+    "앉다",
+    "않다",
+    "많다",
+
+    "읽다",
+    "맑다",
+    "밝다",
+
+    "젊다",
+
+    "넓다",
+    "짧다",
+    "얇다",
+    "밟다",
+
+    "핥다",
+    "읊다",
+
+    "싫다",
+    "옳다",
+    "끓다",
+    "뚫다",
+
+    "없다"
+
+  ],
+
+
+  3: [
+
+    "고구마",
+    "바나나",
+    "자동차",
+    "자전거",
+    "비행기",
+
+    "어린이",
+
+    "강아지",
+    "고양이",
+    "송아지",
+    "병아리",
+    "개구리",
+    "다람쥐",
+    "코끼리",
+    "호랑이",
+    "원숭이",
+
+    "오징어",
+    "거북이",
+    "물고기",
+
+    "도토리",
+    "잠자리",
+    "무지개",
+    "소나무",
+    "나뭇잎",
+
+    "놀이터",
+    "운동장",
+
+    "선생님",
+
+    "지우개",
+    "색연필",
+
+    "우체국",
+    "경찰서",
+    "소방서",
+    "도서관",
+    "미술관",
+    "박물관",
+    "동물원",
+
+    "화장실",
+
+    "교과서",
+    "시간표",
+    "준비물",
+    "실내화",
+
+    "냉장고",
+    "세탁기",
+    "청소기",
+    "선풍기",
+
+    "장난감",
+    "운동화",
+
+    "귀걸이",
+    "외국인",
+    "회사원",
+    "회의실",
+    "과학자",
+
+    "앉아요",
+    "많아요",
+    "읽어요",
+    "맑아요",
+    "밝아요",
+    "젊어요",
+    "넓어요",
+    "짧아요",
+    "얇아요",
+    "밟아요",
+    "핥아요",
+    "읊어요",
+    "싫어요",
+    "옳아요",
+    "끓어요",
+    "뚫어요",
+    "없어요",
+    "값어치"
+
+  ]
 
 };
 
 
-/* =========================================================
-   기본 선택
-========================================================= */
+/* ============================================================
+   3. 3어절 문장 데이터
+   5단계 × 36문장 = 총 180문장
+============================================================ */
+
+const sentenceBank = {
+
+  /* ========================================================
+     1단계 : 쉬운 문장
+  ======================================================== */
+
+  easy: [
+
+    "나는 학교에 가요.",
+    "아기가 우유를 마셔요.",
+    "나비가 하늘을 날아요.",
+    "토끼가 풀을 먹어요.",
+    "엄마가 노래를 불러요.",
+    "아빠가 문을 열어요.",
+    "친구가 같이 놀아요.",
+    "고양이가 잠을 자요.",
+    "아이가 그림을 그려요.",
+    "오리가 물에 있어요.",
+    "강아지가 꼬리를 흔들어요.",
+    "누나가 치마를 입어요.",
+
+    "동생이 우유를 마셔요.",
+    "아기가 손을 흔들어요.",
+    "나는 노래를 불러요.",
+    "친구가 나를 봐요.",
+    "우리는 학교에 가요.",
+    "엄마가 사과를 먹어요.",
+    "아빠가 모자를 써요.",
+    "토끼가 산으로 가요.",
+    "나비가 꽃을 봐요.",
+    "아이가 공을 굴려요.",
+    "오리가 물을 마셔요.",
+    "고양이가 나를 봐요.",
+
+    "친구가 그림을 봐요.",
+    "나는 바다를 봐요.",
+    "아기가 바나나를 먹어요.",
+    "엄마가 아기를 안아요.",
+    "아빠가 우산을 펴요.",
+    "누나가 노래를 해요.",
+    "동생이 장난감을 봐요.",
+    "우리는 같이 웃어요.",
+    "아이가 나무를 봐요.",
+    "친구가 손을 흔들어요.",
+    "강아지가 나무를 봐요.",
+    "나는 우유를 마셔요."
+
+  ],
+
+
+  /* ========================================================
+     2단계 : 기본 받침
+  ======================================================== */
+
+  final: [
+
+    "나는 공을 잡아요.",
+    "엄마가 밥을 먹어요.",
+    "친구가 책을 봐요.",
+    "동생이 옷을 입어요.",
+    "아빠가 창문을 닫아요.",
+    "강아지가 공을 물어요.",
+    "아이가 손을 씻어요.",
+    "우리는 운동장에 가요.",
+    "엄마가 김밥을 만들어요.",
+    "아빠가 신발을 신어요.",
+    "친구가 연필을 잡아요.",
+    "선생님이 칠판을 닦아요.",
+
+    "동생이 양말을 신어요.",
+    "아이가 문을 닫아요.",
+    "고양이가 방에 있어요.",
+    "나는 물을 마셔요.",
+    "친구가 공책을 펴요.",
+    "엄마가 국을 만들어요.",
+    "아빠가 밥상을 차려요.",
+    "강아지가 밥을 먹어요.",
+    "우리는 공원에 가요.",
+    "아이가 가방을 메요.",
+    "친구가 신발을 신어요.",
+    "엄마가 창문을 열어요.",
+
+    "아빠가 신문을 봐요.",
+    "동생이 공을 던져요.",
+    "나는 연필로 써요.",
+    "친구가 손뼉을 쳐요.",
+    "아이가 사다리를 올라요.",
+    "우리는 점심을 먹어요.",
+    "엄마가 접시를 씻어요.",
+    "아빠가 수건을 널어요.",
+    "동생이 그림책을 봐요.",
+    "친구가 선물을 받아요.",
+    "나는 가방을 열어요.",
+    "아이가 물병을 들어요."
+
+  ],
+
+
+  /* ========================================================
+     3단계 : 이중모음
+  ======================================================== */
+
+  compound: [
+
+    "친구가 과자를 먹어요.",
+    "돼지가 밥을 먹어요.",
+    "의사가 아이를 봐요.",
+    "여우가 뒤로 가요.",
+    "우리는 교회에 가요.",
+    "아빠가 외투를 입어요.",
+    "원숭이가 바나나를 먹어요.",
+    "아이가 의자에 있어요.",
+    "엄마가 과일을 씻어요.",
+    "친구가 시계를 봐요.",
+    "아이가 귀를 만져요.",
+    "우리는 위로 올라가요.",
+
+    "돼지가 우리를 봐요.",
+    "여우가 숲으로 가요.",
+    "엄마가 화분에 물줘요.",
+    "아빠가 과일을 깎아요.",
+    "친구가 교실에 와요.",
+    "아이가 외투를 벗어요.",
+    "의사가 귀를 봐요.",
+    "원숭이가 위를 봐요.",
+    "친구가 뒤를 돌아요.",
+    "우리는 과학관에 가요.",
+    "아이가 피아노를 쳐요.",
+    "엄마가 의자를 닦아요.",
+
+    "돼지가 울타리로 와요.",
+    "여우가 바위를 넘어요.",
+    "아빠가 회의를 해요.",
+    "친구가 월요일에 와요.",
+    "우리는 화요일에 만나요.",
+    "아이가 귀걸이를 봐요.",
+    "엄마가 원두를 갈아요.",
+    "의사가 환자를 도와요.",
+    "아빠가 회사에 가요.",
+    "친구가 과일을 나눠요.",
+    "우리는 체육관에 가요.",
+    "아이가 무지개를 봐요."
+
+  ],
+
+
+  /* ========================================================
+     4단계 : 겹받침
+  ======================================================== */
+
+  double: [
+
+    "엄마가 책을 읽어요.",
+    "물이 아주 맑아요.",
+    "방이 아주 넓어요.",
+    "길이가 아주 짧아요.",
+    "종이가 아주 얇아요.",
+    "나는 의자에 앉아요.",
+    "친구가 아주 많아요.",
+    "국이 지금 끓어요.",
+    "나는 그것이 싫어요.",
+    "돈이 하나도 없어요.",
+    "아빠가 땅을 밟아요.",
+    "강아지가 우유를 핥아요.",
+
+    "우리는 시를 읊어요.",
+    "하늘이 아주 맑아요.",
+    "상자가 너무 넓어요.",
+    "나는 책을 읽어요.",
+    "아이가 의자에 앉아요.",
+    "물이 많이 끓어요.",
+    "종이가 너무 얇아요.",
+    "줄이 아주 짧아요.",
+    "운동장이 정말 넓어요.",
+    "사람이 정말 많아요.",
+    "나는 거짓말이 싫어요.",
+    "상자에 연필이 없어요.",
+
+    "엄마가 국을 끓여요.",
+    "아빠가 신문을 읽어요.",
+    "동생이 바닥을 밟아요.",
+    "고양이가 우유를 핥아요.",
+    "우리는 동시를 읊어요.",
+    "오늘은 하늘이 맑아요.",
+    "교실이 아주 넓어요.",
+    "연필이 너무 짧아요.",
+    "종잇장이 아주 얇아요.",
+    "친구가 의자에 앉아요.",
+    "나는 돈이 없어요.",
+    "아이가 책을 읽어요."
+
+  ],
+
+
+  /* ========================================================
+     5단계 : 종합
+  ======================================================== */
+
+  mixed: [
+
+    "원숭이가 나무에 올라가요.",
+    "친구가 과일을 먹어요.",
+    "엄마가 책을 읽어요.",
+    "아빠가 외투를 입어요.",
+    "아이가 의자에 앉아요.",
+    "하늘이 아주 맑아요.",
+    "우리는 도서관에 가요.",
+    "강아지가 공원을 뛰어요.",
+    "친구가 그림책을 읽어요.",
+    "교실에 친구가 많아요.",
+    "돼지가 밥을 먹어요.",
+    "여우가 뒤로 달려요.",
+
+    "엄마가 과자를 나눠요.",
+    "아빠가 창문을 열어요.",
+    "동생이 운동화를 신어요.",
+    "나는 시계를 봐요.",
+    "친구가 공책을 펴요.",
+    "아이가 손을 씻어요.",
+    "우리는 학교에 가요.",
+    "고양이가 의자에 앉아요.",
+    "아빠가 신문을 읽어요.",
+    "엄마가 화분을 닦아요.",
+    "친구가 우산을 펴요.",
+    "동생이 과일을 먹어요.",
+
+    "아이는 바다를 봐요.",
+    "우리는 체육관에 가요.",
+    "강아지가 물을 마셔요.",
+    "토끼가 풀을 먹어요.",
+    "나비가 꽃에 앉아요.",
+    "엄마가 국을 끓여요.",
+    "아빠가 가방을 들어요.",
+    "친구가 나를 도와요.",
+    "아이가 피아노를 쳐요.",
+    "우리는 노래를 불러요.",
+    "여우가 바위를 넘어요.",
+    "나는 그림책을 읽어요."
+
+  ]
+
+};
+
+
+/* ============================================================
+   4. 문장 단계 정보
+============================================================ */
+
+const sentenceStageInfo = {
+
+  easy: {
+    name: "1단계 쉬운 문장",
+    description:
+      "짧고 익숙한 낱말로 이루어진 3어절 문장을 읽습니다."
+  },
+
+  final: {
+    name: "2단계 기본 받침",
+    description:
+      "기본 받침이 들어간 낱말을 포함한 3어절 문장을 읽습니다."
+  },
+
+  compound: {
+    name: "3단계 이중모음",
+    description:
+      "과자, 돼지, 의자, 외투, 귀, 원숭이처럼 이중모음이 들어간 문장을 읽습니다."
+  },
+
+  double: {
+    name: "4단계 겹받침",
+    description:
+      "읽어요, 앉아요, 많아요, 넓어요, 짧아요, 없어요처럼 겹받침이 들어간 문장을 읽습니다."
+  },
+
+  mixed: {
+    name: "5단계 종합",
+    description:
+      "기본 받침, 이중모음, 겹받침이 섞인 문장을 읽습니다."
+  }
+
+};
+
+
+/* ============================================================
+   5. 기본값
+============================================================ */
 
 const defaultConsonantIndexes = [
-  0,2,3,5,6,
-  7,9,11,12,18
+  0, 2, 3, 5, 6,
+  7, 9, 11, 12, 18
 ];
 
+
 const defaultVowelIndexes = [
-  0,2,4,6,8,
-  12,13,17,18,20
+  0, 2, 4, 6, 8,
+  12, 13, 17, 18, 20
 ];
+
 
 const defaultFinalIndexes = [
   0
 ];
+
 
 const basicFinalIndexes = [
   1,
@@ -2000,44 +2114,29 @@ const basicFinalIndexes = [
 ];
 
 
-/* 홑받침 */
-
 const simpleFinalIndexes =
-
   finals
-
     .filter(
       item =>
         item.type === "simple"
     )
-
     .map(
       item =>
         item.index
     );
 
 
-/* 겹받침 */
-
 const doubleFinalIndexes =
-
   finals
-
     .filter(
       item =>
         item.type === "double"
     )
-
     .map(
       item =>
         item.index
     );
 
-
-/*
-  겹받침 단어를 만들기 위해
-  '받침 없음'도 함께 선택
-*/
 
 const doubleFinalPracticeIndexes = [
   0,
@@ -2045,9 +2144,23 @@ const doubleFinalPracticeIndexes = [
 ];
 
 
-/* =========================================================
-   DOM
-========================================================= */
+/* 이중모음으로 분류할 모음 */
+
+const compoundVowelIndexes =
+  new Set([
+    2, 3,
+    6, 7,
+    9, 10, 11,
+    12,
+    14, 15, 16,
+    17,
+    19
+  ]);
+
+
+/* ============================================================
+   6. DOM
+============================================================ */
 
 const consonantGrid =
   document.getElementById("consonantGrid");
@@ -2058,6 +2171,7 @@ const vowelGrid =
 const finalGrid =
   document.getElementById("finalGrid");
 
+
 const correctCountElement =
   document.getElementById("correctCount");
 
@@ -2067,6 +2181,7 @@ const attemptCountElement =
 const accuracyElement =
   document.getElementById("accuracy");
 
+
 const letterElement =
   document.getElementById("letter");
 
@@ -2075,6 +2190,7 @@ const compositionElement =
 
 const modeBadge =
   document.getElementById("modeBadge");
+
 
 const correctButton =
   document.getElementById("correctButton");
@@ -2091,14 +2207,20 @@ const finishButton =
 const reviewButton =
   document.getElementById("reviewButton");
 
+
 const compositionButton =
   document.getElementById("compositionButton");
+
+const highlightButton =
+  document.getElementById("highlightButton");
 
 const speakButton =
   document.getElementById("speakButton");
 
+
 const wrongList =
   document.getElementById("wrongList");
+
 
 const randomModeButton =
   document.getElementById("randomModeButton");
@@ -2106,14 +2228,50 @@ const randomModeButton =
 const wordModeButton =
   document.getElementById("wordModeButton");
 
+const sentenceModeButton =
+  document.getElementById("sentenceModeButton");
+
+
 const modeDescription =
   document.getElementById("modeDescription");
+
+
+const lengthCard =
+  document.getElementById("lengthCard");
 
 const lengthDescription =
   document.getElementById("lengthDescription");
 
 const lengthButtons =
   document.querySelectorAll(".length-button");
+
+
+const wordFilterCard =
+  document.getElementById("wordFilterCard");
+
+const wordFilterButtons =
+  document.querySelectorAll(".word-filter-button");
+
+
+const sentenceStageCard =
+  document.getElementById("sentenceStageCard");
+
+const sentenceStageButtons =
+  document.querySelectorAll(".sentence-stage-button");
+
+const sentenceStageDescription =
+  document.getElementById("sentenceStageDescription");
+
+
+const jamoSettings =
+  document.getElementById("jamoSettings");
+
+const jamoSummary =
+  document.getElementById("jamoSummary");
+
+const sentenceSummary =
+  document.getElementById("sentenceSummary");
+
 
 const selectedModeText =
   document.getElementById("selectedModeText");
@@ -2135,6 +2293,14 @@ const resultTypeLabel =
 
 const combinationCount =
   document.getElementById("combinationCount");
+
+
+const sentenceStageName =
+  document.getElementById("sentenceStageName");
+
+const sentenceCount =
+  document.getElementById("sentenceCount");
+
 
 const resultModal =
   document.getElementById("resultModal");
@@ -2161,50 +2327,139 @@ const closeModalButton =
   document.getElementById("closeModalButton");
 
 
-/* =========================================================
-   상태
-========================================================= */
+/* ============================================================
+   7. 상태
+============================================================ */
 
 let practiceMode =
   "random";
 
+
 let selectedLength =
   1;
+
+
+let wordFilter =
+  "all";
+
+
+let sentenceStage =
+  "easy";
+
 
 let correctCount =
   0;
 
+
 let attempts =
   0;
+
 
 let wrongCount =
   0;
 
+
 let currentItem =
   null;
+
 
 let previousCharacter =
   "";
 
+
 let gameStarted =
   false;
+
 
 let showComposition =
   true;
 
+
+let showSentenceBoundaries =
+  false;
+
+
+let highlightWordIndex =
+  -1;
+
+
 let reviewMode =
   false;
 
+
 let reviewQueue =
   [];
+
 
 const wrongHistory =
   new Map();
 
 
-/* =========================================================
-   선택 버튼
-========================================================= */
+/* ============================================================
+   8. 3어절 문장 검사
+============================================================ */
+
+function validateSentenceBank() {
+
+  let total =
+    0;
+
+
+  let errors =
+    0;
+
+
+  Object.entries(
+    sentenceBank
+  ).forEach(
+    ([stage, sentences]) => {
+
+      sentences.forEach(
+        sentence => {
+
+          total++;
+
+
+          const count =
+
+            sentence
+              .trim()
+              .split(/\s+/)
+              .length;
+
+
+          if (
+            count !== 3
+          ) {
+
+            console.error(
+              `3어절 오류 [${stage}]`,
+              sentence,
+              `${count}어절`
+            );
+
+
+            errors++;
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  console.log(
+    `문장 검사 완료: ${total}문장 / 오류 ${errors}개`
+  );
+
+}
+
+
+/* ============================================================
+   9. 자모 선택 버튼 생성
+============================================================ */
 
 function createChoiceGrid(
   data,
@@ -2221,7 +2476,9 @@ function createChoiceGrid(
     item => {
 
       const wrapper =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
 
       wrapper.className =
@@ -2253,7 +2510,9 @@ function createChoiceGrid(
 
 
       const input =
-        document.createElement("input");
+        document.createElement(
+          "input"
+        );
 
 
       input.type =
@@ -2275,7 +2534,9 @@ function createChoiceGrid(
 
 
       const label =
-        document.createElement("label");
+        document.createElement(
+          "label"
+        );
 
 
       label.htmlFor =
@@ -2293,11 +2554,19 @@ function createChoiceGrid(
       );
 
 
-      wrapper.appendChild(input);
+      wrapper.appendChild(
+        input
+      );
 
-      wrapper.appendChild(label);
 
-      container.appendChild(wrapper);
+      wrapper.appendChild(
+        label
+      );
+
+
+      container.appendChild(
+        wrapper
+      );
 
     }
   );
@@ -2329,9 +2598,9 @@ createChoiceGrid(
 );
 
 
-/* =========================================================
-   한글 만들기
-========================================================= */
+/* ============================================================
+   10. 한글 조합
+============================================================ */
 
 function makeHangul(
   choIndex,
@@ -2364,9 +2633,9 @@ function makeHangul(
 }
 
 
-/* =========================================================
-   한글 분해
-========================================================= */
+/* ============================================================
+   11. 한글 분해
+============================================================ */
 
 function decomposeHangul(
   char
@@ -2448,9 +2717,9 @@ function decomposeHangul(
 }
 
 
-/* =========================================================
-   선택된 항목
-========================================================= */
+/* ============================================================
+   12. 선택 항목 가져오기
+============================================================ */
 
 function getSelectedItems(
   container,
@@ -2512,9 +2781,9 @@ function getSelectedFinals() {
 }
 
 
-/* =========================================================
-   실제 단어 데이터 변환
-========================================================= */
+/* ============================================================
+   13. 실제 단어 변환
+============================================================ */
 
 function wordToItem(
   word
@@ -2536,6 +2805,9 @@ function wordToItem(
 
   return {
 
+    kind:
+      "word",
+
     char:
       word,
 
@@ -2549,9 +2821,76 @@ function wordToItem(
 }
 
 
-/* =========================================================
-   선택 조건에 맞는 실제 단어
-========================================================= */
+/* ============================================================
+   14. 이중모음 / 겹받침 여부
+============================================================ */
+
+function wordHasCompoundVowel(
+  word
+) {
+
+  return [...word].some(
+    char => {
+
+      const part =
+        decomposeHangul(
+          char
+        );
+
+
+      return (
+        part &&
+        compoundVowelIndexes.has(
+          part.jungIndex
+        )
+      );
+
+    }
+  );
+
+}
+
+
+function wordHasDoubleFinal(
+  word
+) {
+
+  return [...word].some(
+    char => {
+
+      const part =
+        decomposeHangul(
+          char
+        );
+
+
+      if (!part) {
+
+        return false;
+
+      }
+
+
+      const final =
+        finals[
+          part.jongIndex
+        ];
+
+
+      return (
+        final &&
+        final.type === "double"
+      );
+
+    }
+  );
+
+}
+
+
+/* ============================================================
+   15. 실제 단어 필터
+============================================================ */
 
 function getFilteredWords() {
 
@@ -2589,6 +2928,7 @@ function getFilteredWords() {
 
 
   const consonantSet =
+
     new Set(
       selectedConsonants.map(
         item =>
@@ -2598,6 +2938,7 @@ function getFilteredWords() {
 
 
   const vowelSet =
+
     new Set(
       selectedVowels.map(
         item =>
@@ -2607,6 +2948,7 @@ function getFilteredWords() {
 
 
   const finalSet =
+
     new Set(
       selectedFinals.map(
         item =>
@@ -2616,18 +2958,25 @@ function getFilteredWords() {
 
 
   const words =
-    wordBank[selectedLength] || [];
+
+    [
+      ...new Set(
+        wordBank[
+          selectedLength
+        ] || []
+      )
+    ];
 
 
   return words.filter(
     word => {
 
-      const characters =
+      const chars =
         [...word];
 
 
       if (
-        characters.length !==
+        chars.length !==
         selectedLength
       ) {
 
@@ -2636,11 +2985,37 @@ function getFilteredWords() {
       }
 
 
-      return characters.every(
+      if (
+        wordFilter === "compound" &&
+        !wordHasCompoundVowel(
+          word
+        )
+      ) {
+
+        return false;
+
+      }
+
+
+      if (
+        wordFilter === "double" &&
+        !wordHasDoubleFinal(
+          word
+        )
+      ) {
+
+        return false;
+
+      }
+
+
+      return chars.every(
         char => {
 
           const part =
-            decomposeHangul(char);
+            decomposeHangul(
+              char
+            );
 
 
           if (!part) {
@@ -2679,9 +3054,9 @@ function getFilteredWords() {
 }
 
 
-/* =========================================================
-   연습 방식
-========================================================= */
+/* ============================================================
+   16. 연습 방식 변경
+============================================================ */
 
 function setPracticeMode(
   mode
@@ -2707,19 +3082,140 @@ function setPracticeMode(
     );
 
 
-  const oneLetterButton =
-
-    document.querySelector(
-      '.length-button[data-length="1"]'
+  sentenceModeButton
+    .classList
+    .toggle(
+      "selected",
+      mode === "sentence"
     );
+
+
+  gameStarted =
+    false;
+
+
+  correctButton.disabled =
+    true;
+
+
+  wrongButton.disabled =
+    true;
+
+
+  finishButton.disabled =
+    true;
+
+
+  modeBadge.textContent =
+    "연습 준비";
+
+
+  currentItem =
+    null;
+
+
+  letterElement.innerHTML =
+    mode === "sentence"
+      ? "나는 학교에 가요."
+      : "가";
+
+
+  if (
+    mode === "sentence"
+  ) {
+
+    lengthCard.style.display =
+      "none";
+
+
+    wordFilterCard.classList.remove(
+      "show"
+    );
+
+
+    sentenceStageCard.classList.add(
+      "show"
+    );
+
+
+    jamoSettings.style.display =
+      "none";
+
+
+    jamoSummary.style.display =
+      "none";
+
+
+    sentenceSummary.style.display =
+      "block";
+
+
+    highlightButton.classList.add(
+      "show"
+    );
+
+
+    compositionElement.style.display =
+      "none";
+
+
+    compositionButton.textContent =
+      "어절 나누기";
+
+
+    letterElement.className =
+      "letter sentence";
+
+
+    modeDescription.textContent =
+      "띄어쓰기 기준 정확히 3어절로 된 짧은 문장을 읽습니다.";
+
+  }
 
 
   if (
     mode === "word"
   ) {
 
-    oneLetterButton.disabled =
-      true;
+    lengthCard.style.display =
+      "block";
+
+
+    wordFilterCard.classList.add(
+      "show"
+    );
+
+
+    sentenceStageCard.classList.remove(
+      "show"
+    );
+
+
+    jamoSettings.style.display =
+      "block";
+
+
+    jamoSummary.style.display =
+      "block";
+
+
+    sentenceSummary.style.display =
+      "none";
+
+
+    highlightButton.classList.remove(
+      "show"
+    );
+
+
+    compositionElement.style.display =
+      "block";
+
+
+    compositionButton.textContent =
+      showComposition
+        ? "조합 숨기기"
+        : "조합 보기";
 
 
     if (
@@ -2732,20 +3228,78 @@ function setPracticeMode(
     }
 
 
+    document
+      .querySelector(
+        '.length-button[data-length="1"]'
+      )
+      .disabled =
+        true;
+
+
     selectedModeText.textContent =
       "실제 단어";
 
 
     modeDescription.textContent =
+      "선택한 자모로 이루어진 실제 2·3글자 단어를 읽습니다.";
 
-      "실제 사용하는 2·3글자 단어만 출제합니다. 이중모음과 겹받침 단어도 포함됩니다.";
+
+    updateLetterSize();
 
   }
 
-  else {
 
-    oneLetterButton.disabled =
-      false;
+  if (
+    mode === "random"
+  ) {
+
+    lengthCard.style.display =
+      "block";
+
+
+    wordFilterCard.classList.remove(
+      "show"
+    );
+
+
+    sentenceStageCard.classList.remove(
+      "show"
+    );
+
+
+    jamoSettings.style.display =
+      "block";
+
+
+    jamoSummary.style.display =
+      "block";
+
+
+    sentenceSummary.style.display =
+      "none";
+
+
+    highlightButton.classList.remove(
+      "show"
+    );
+
+
+    compositionElement.style.display =
+      "block";
+
+
+    compositionButton.textContent =
+      showComposition
+        ? "조합 숨기기"
+        : "조합 보기";
+
+
+    document
+      .querySelector(
+        '.length-button[data-length="1"]'
+      )
+      .disabled =
+        false;
 
 
     selectedModeText.textContent =
@@ -2753,8 +3307,10 @@ function setPracticeMode(
 
 
     modeDescription.textContent =
-
       "선택한 초성·모음·받침을 무작위로 조합합니다.";
+
+
+    updateLetterSize();
 
   }
 
@@ -2763,23 +3319,23 @@ function setPracticeMode(
 
   updateLengthDescription();
 
-  updateLetterSize();
-
   updateSelectionSummary();
 
 }
 
 
-/* =========================================================
-   글자 수
-========================================================= */
+/* ============================================================
+   17. 글자 수
+============================================================ */
 
 function setWordLength(
   length
 ) {
 
   length =
-    Number(length);
+    Number(
+      length
+    );
 
 
   if (
@@ -2818,7 +3374,8 @@ function refreshLengthButtons() {
 
         Number(
           button.dataset.length
-        ) === selectedLength
+        ) ===
+        selectedLength
 
       );
 
@@ -2835,6 +3392,15 @@ function refreshLengthButtons() {
 function updateLengthDescription() {
 
   if (
+    practiceMode === "sentence"
+  ) {
+
+    return;
+
+  }
+
+
+  if (
     practiceMode === "word"
   ) {
 
@@ -2842,9 +3408,9 @@ function updateLengthDescription() {
 
       selectedLength === 2
 
-        ? "실제 두 글자 단어를 읽습니다."
+        ? "두 글자 실제 단어를 읽습니다."
 
-        : "실제 세 글자 단어를 읽습니다.";
+        : "세 글자 실제 단어를 읽습니다.";
 
 
     return;
@@ -2852,27 +3418,42 @@ function updateLengthDescription() {
   }
 
 
-  lengthDescription.textContent =
-
+  if (
     selectedLength === 1
+  ) {
 
-      ? "한 글자를 만들어 읽습니다."
+    lengthDescription.textContent =
+      "한 글자를 만들어 읽습니다.";
 
-      : `${selectedLength}글자를 무작위로 조합합니다.`;
+  }
+
+  else {
+
+    lengthDescription.textContent =
+      `${selectedLength}글자를 무작위로 조합합니다.`;
+
+  }
 
 }
 
 
-/* =========================================================
-   글자 크기
-========================================================= */
+/* ============================================================
+   18. 글자 크기
+============================================================ */
 
 function updateLetterSize() {
 
-  letterElement.classList.remove(
-    "single-letter",
-    "three-letter"
-  );
+  if (
+    practiceMode === "sentence"
+  ) {
+
+    return;
+
+  }
+
+
+  letterElement.className =
+    "letter";
 
 
   if (
@@ -2899,11 +3480,117 @@ function updateLetterSize() {
 }
 
 
-/* =========================================================
-   현재 선택
-========================================================= */
+/* ============================================================
+   19. 단어 필터
+============================================================ */
+
+function setWordFilter(
+  filter
+) {
+
+  wordFilter =
+    filter;
+
+
+  wordFilterButtons.forEach(
+    button => {
+
+      button.classList.toggle(
+
+        "selected",
+
+        button.dataset.filter ===
+        filter
+
+      );
+
+    }
+  );
+
+
+  updateSelectionSummary();
+
+}
+
+
+/* ============================================================
+   20. 문장 단계
+============================================================ */
+
+function setSentenceStage(
+  stage
+) {
+
+  sentenceStage =
+    stage;
+
+
+  sentenceStageButtons.forEach(
+    button => {
+
+      button.classList.toggle(
+
+        "selected",
+
+        button.dataset.stage ===
+        stage
+
+      );
+
+    }
+  );
+
+
+  sentenceStageDescription.textContent =
+
+    sentenceStageInfo[
+      stage
+    ].description;
+
+
+  sentenceStageName.textContent =
+
+    sentenceStageInfo[
+      stage
+    ].name;
+
+
+  sentenceCount.textContent =
+
+    `${sentenceBank[stage].length}문장`;
+
+
+  updateSelectionSummary();
+
+}
+
+
+/* ============================================================
+   21. 현재 선택 표시
+============================================================ */
 
 function updateSelectionSummary() {
+
+  if (
+    practiceMode === "sentence"
+  ) {
+
+    sentenceStageName.textContent =
+
+      sentenceStageInfo[
+        sentenceStage
+      ].name;
+
+
+    sentenceCount.textContent =
+
+      `${sentenceBank[sentenceStage].length}문장`;
+
+
+    return;
+
+  }
+
 
   const selectedConsonants =
     getSelectedConsonants();
@@ -2924,7 +3611,10 @@ function updateSelectionSummary() {
       ? "선택 없음"
 
       : selectedConsonants
-          .map(item => item.char)
+          .map(
+            item =>
+              item.char
+          )
           .join(" ");
 
 
@@ -2935,7 +3625,10 @@ function updateSelectionSummary() {
       ? "선택 없음"
 
       : selectedVowels
-          .map(item => item.char)
+          .map(
+            item =>
+              item.char
+          )
           .join(" ");
 
 
@@ -2959,7 +3652,7 @@ function updateSelectionSummary() {
     practiceMode === "word"
   ) {
 
-    const availableWords =
+    const words =
       getFilteredWords();
 
 
@@ -2968,7 +3661,7 @@ function updateSelectionSummary() {
 
 
     combinationCount.textContent =
-      `${availableWords.length}개`;
+      `${words.length}개`;
 
 
     return;
@@ -3003,9 +3696,9 @@ function updateSelectionSummary() {
 }
 
 
-/* =========================================================
-   무작위 한 음절
-========================================================= */
+/* ============================================================
+   22. 무작위 한 음절
+============================================================ */
 
 function generateRandomSyllable() {
 
@@ -3088,9 +3781,9 @@ function generateRandomSyllable() {
 }
 
 
-/* =========================================================
-   무작위 문제
-========================================================= */
+/* ============================================================
+   23. 무작위 조합
+============================================================ */
 
 function generateRandomCombination() {
 
@@ -3124,11 +3817,17 @@ function generateRandomCombination() {
     const text =
 
       syllables
-        .map(item => item.char)
+        .map(
+          item =>
+            item.char
+        )
         .join("");
 
 
     result = {
+
+      kind:
+        "combination",
 
       char:
         text,
@@ -3146,7 +3845,11 @@ function generateRandomCombination() {
 
   } while (
 
-    result.char === previousCharacter &&
+    result.char ===
+      previousCharacter
+
+    &&
+
     tryCount < 50
 
   );
@@ -3161,9 +3864,9 @@ function generateRandomCombination() {
 }
 
 
-/* =========================================================
-   실제 단어 문제
-========================================================= */
+/* ============================================================
+   24. 실제 단어 생성
+============================================================ */
 
 function generateRealWord() {
 
@@ -3194,13 +3897,17 @@ function generateRealWord() {
     words.length > 1
   ) {
 
-    let tryCount =
+    let tries =
       0;
 
 
     while (
-      word === previousCharacter &&
-      tryCount < 30
+      word ===
+        previousCharacter
+
+      &&
+
+      tries < 30
     ) {
 
       word =
@@ -3213,7 +3920,7 @@ function generateRealWord() {
         ];
 
 
-      tryCount++;
+      tries++;
 
     }
 
@@ -3224,29 +3931,127 @@ function generateRealWord() {
     word;
 
 
-  return wordToItem(word);
+  return wordToItem(
+    word
+  );
 
 }
 
 
-/* =========================================================
-   문제 생성
-========================================================= */
+/* ============================================================
+   25. 문장 생성
+============================================================ */
+
+function generateSentence() {
+
+  const list =
+    sentenceBank[
+      sentenceStage
+    ];
+
+
+  let sentence =
+
+    list[
+      Math.floor(
+        Math.random() *
+        list.length
+      )
+    ];
+
+
+  if (
+    list.length > 1
+  ) {
+
+    let tries =
+      0;
+
+
+    while (
+      sentence ===
+        previousCharacter
+
+      &&
+
+      tries < 30
+    ) {
+
+      sentence =
+
+        list[
+          Math.floor(
+            Math.random() *
+            list.length
+          )
+        ];
+
+
+      tries++;
+
+    }
+
+  }
+
+
+  previousCharacter =
+    sentence;
+
+
+  return {
+
+    kind:
+      "sentence",
+
+    char:
+      sentence,
+
+    words:
+
+      sentence
+        .trim()
+        .split(/\s+/),
+
+    stage:
+      sentenceStage
+
+  };
+
+}
+
+
+/* ============================================================
+   26. 문제 생성
+============================================================ */
 
 function generateItem() {
 
-  return practiceMode === "word"
+  if (
+    practiceMode === "sentence"
+  ) {
 
-    ? generateRealWord()
+    return generateSentence();
 
-    : generateRandomCombination();
+  }
+
+
+  if (
+    practiceMode === "word"
+  ) {
+
+    return generateRealWord();
+
+  }
+
+
+  return generateRandomCombination();
 
 }
 
 
-/* =========================================================
-   조합 설명
-========================================================= */
+/* ============================================================
+   27. 자모 조합 표시
+============================================================ */
 
 function buildCompositionHTML(
   item
@@ -3310,27 +4115,153 @@ function buildCompositionHTML(
 }
 
 
-/* =========================================================
-   문제 표시
-========================================================= */
+/* ============================================================
+   28. 문장 표시
+============================================================ */
+
+function renderSentence() {
+
+  if (
+    !currentItem ||
+    currentItem.kind !== "sentence"
+  ) {
+
+    return;
+
+  }
+
+
+  const html =
+
+    currentItem.words
+
+      .map(
+        (word, index) => {
+
+          const active =
+
+            index ===
+            highlightWordIndex
+
+              ? "active"
+
+              : "";
+
+
+          return `
+
+            <span class="sentence-word ${active}">
+              ${word}
+            </span>
+
+          `;
+
+        }
+      )
+
+      .join(
+
+        showSentenceBoundaries
+
+          ? `<span class="sentence-divider">/</span>`
+
+          : " "
+
+      );
+
+
+  letterElement.innerHTML =
+    html;
+
+}
+
+
+/* ============================================================
+   29. 문제 표시
+============================================================ */
 
 function displayItem(
   item
 ) {
 
-  if (!item) return;
+  if (!item) {
+
+    return;
+
+  }
 
 
   currentItem =
     item;
 
 
+  highlightWordIndex =
+    -1;
+
+
+  if (
+    item.kind === "sentence"
+  ) {
+
+    letterElement.className =
+      "letter sentence";
+
+
+    compositionElement.style.display =
+      "none";
+
+
+    highlightButton.classList.add(
+      "show"
+    );
+
+
+    compositionButton.textContent =
+
+      showSentenceBoundaries
+
+        ? "어절 붙여 보기"
+
+        : "어절 나누기";
+
+
+    renderSentence();
+
+
+    return;
+
+  }
+
+
+  updateLetterSize();
+
+
   letterElement.textContent =
     item.char;
 
 
+  compositionElement.style.display =
+    "block";
+
+
   compositionElement.innerHTML =
-    buildCompositionHTML(item);
+    buildCompositionHTML(
+      item
+    );
+
+
+  highlightButton.classList.remove(
+    "show"
+  );
+
+
+  compositionButton.textContent =
+
+    showComposition
+
+      ? "조합 숨기기"
+
+      : "조합 보기";
 
 
   updateCompositionVisibility();
@@ -3338,9 +4269,9 @@ function displayItem(
 }
 
 
-/* =========================================================
-   다음
-========================================================= */
+/* ============================================================
+   30. 다음 문제
+============================================================ */
 
 function nextItem() {
 
@@ -3398,10 +4329,6 @@ function nextItem() {
       true;
 
 
-    modeBadge.textContent =
-      "선택 조건 확인";
-
-
     alert(
       "현재 선택 조건에 맞는 실제 단어가 없습니다.\n\n자음·모음·받침을 더 선택해 주세요."
     );
@@ -3412,14 +4339,16 @@ function nextItem() {
   }
 
 
-  displayItem(item);
+  displayItem(
+    item
+  );
 
 }
 
 
-/* =========================================================
-   맞음
-========================================================= */
+/* ============================================================
+   31. 맞음
+============================================================ */
 
 function handleCorrect() {
 
@@ -3473,9 +4402,9 @@ function handleCorrect() {
 }
 
 
-/* =========================================================
-   틀림
-========================================================= */
+/* ============================================================
+   32. 틀림
+============================================================ */
 
 function handleWrong() {
 
@@ -3502,11 +4431,13 @@ function handleWrong() {
       reviewQueue.length > 1
     ) {
 
-      const item =
+      const failed =
         reviewQueue.shift();
 
 
-      reviewQueue.push(item);
+      reviewQueue.push(
+        failed
+      );
 
     }
 
@@ -3527,6 +4458,7 @@ function handleWrong() {
   ) {
 
     const saved =
+
       wrongHistory.get(
         currentItem.char
       );
@@ -3561,9 +4493,9 @@ function handleWrong() {
 }
 
 
-/* =========================================================
-   점수판
-========================================================= */
+/* ============================================================
+   33. 점수
+============================================================ */
 
 function updateScoreBoard() {
 
@@ -3594,11 +4526,20 @@ function updateScoreBoard() {
 }
 
 
-/* =========================================================
-   조건 확인
-========================================================= */
+/* ============================================================
+   34. 조건 검사
+============================================================ */
 
 function selectionsAreValid() {
+
+  if (
+    practiceMode === "sentence"
+  ) {
+
+    return true;
+
+  }
+
 
   if (
     getSelectedConsonants()
@@ -3661,9 +4602,9 @@ function selectionsAreValid() {
 }
 
 
-/* =========================================================
-   시작
-========================================================= */
+/* ============================================================
+   35. 시작
+============================================================ */
 
 function startNewPractice() {
 
@@ -3682,20 +4623,26 @@ function startNewPractice() {
   correctCount =
     0;
 
+
   attempts =
     0;
+
 
   wrongCount =
     0;
 
+
   currentItem =
     null;
+
 
   previousCharacter =
     "";
 
+
   reviewMode =
     false;
+
 
   reviewQueue =
     [];
@@ -3720,13 +4667,33 @@ function startNewPractice() {
     false;
 
 
-  modeBadge.textContent =
+  if (
+    practiceMode === "sentence"
+  ) {
 
+    modeBadge.textContent =
+
+      sentenceStageInfo[
+        sentenceStage
+      ].name;
+
+  }
+
+  else if (
     practiceMode === "word"
+  ) {
 
-      ? `${selectedLength}글자 실제 단어`
+    modeBadge.textContent =
+      `${selectedLength}글자 실제 단어`;
 
-      : `${selectedLength}글자 무작위 조합`;
+  }
+
+  else {
+
+    modeBadge.textContent =
+      `${selectedLength}글자 무작위 조합`;
+
+  }
 
 
   updateScoreBoard();
@@ -3738,13 +4705,17 @@ function startNewPractice() {
 }
 
 
-/* =========================================================
-   종료
-========================================================= */
+/* ============================================================
+   36. 종료
+============================================================ */
 
 function finishPractice() {
 
-  if (!gameStarted) return;
+  if (!gameStarted) {
+
+    return;
+
+  }
 
 
   gameStarted =
@@ -3768,21 +4739,17 @@ function finishPractice() {
 
 
   showResult(
-
     "📊",
-
     "연습 결과",
-
     "읽기 연습을 마쳤습니다."
-
   );
 
 }
 
 
-/* =========================================================
-   오답
-========================================================= */
+/* ============================================================
+   37. 오답 다시 연습
+============================================================ */
 
 function startWrongReview() {
 
@@ -3791,7 +4758,7 @@ function startWrongReview() {
   ) {
 
     alert(
-      "다시 연습할 틀린 글자가 없습니다."
+      "다시 연습할 틀린 항목이 없습니다."
     );
 
     return;
@@ -3816,20 +4783,26 @@ function startWrongReview() {
       );
 
 
-  shuffle(reviewQueue);
+  shuffle(
+    reviewQueue
+  );
 
 
   correctCount =
     0;
 
+
   attempts =
     0;
+
 
   wrongCount =
     0;
 
+
   reviewMode =
     true;
+
 
   gameStarted =
     true;
@@ -3838,8 +4811,10 @@ function startWrongReview() {
   correctButton.disabled =
     false;
 
+
   wrongButton.disabled =
     false;
+
 
   finishButton.disabled =
     false;
@@ -3856,6 +4831,10 @@ function startWrongReview() {
 }
 
 
+/* ============================================================
+   38. 오답 완료
+============================================================ */
+
 function finishReview() {
 
   gameStarted =
@@ -3865,8 +4844,10 @@ function finishReview() {
   correctButton.disabled =
     true;
 
+
   wrongButton.disabled =
     true;
+
 
   finishButton.disabled =
     true;
@@ -3883,21 +4864,17 @@ function finishReview() {
 
 
   showResult(
-
     "⭐",
-
     "오답 연습 완료!",
-
-    "틀렸던 글자를 모두 정확하게 읽었습니다."
-
+    "틀렸던 항목을 모두 다시 읽었습니다."
   );
 
 }
 
 
-/* =========================================================
-   오답 목록
-========================================================= */
+/* ============================================================
+   39. 오답 목록
+============================================================ */
 
 function updateWrongList() {
 
@@ -3910,7 +4887,9 @@ function updateWrongList() {
   ) {
 
     const empty =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
 
 
     empty.className =
@@ -3918,10 +4897,12 @@ function updateWrongList() {
 
 
     empty.textContent =
-      "아직 틀린 글자가 없습니다.";
+      "아직 틀린 항목이 없습니다.";
 
 
-    wrongList.appendChild(empty);
+    wrongList.appendChild(
+      empty
+    );
 
 
     reviewButton.disabled =
@@ -3937,7 +4918,9 @@ function updateWrongList() {
     item => {
 
       const chip =
-        document.createElement("span");
+        document.createElement(
+          "span"
+        );
 
 
       chip.className =
@@ -3953,7 +4936,9 @@ function updateWrongList() {
           : item.char;
 
 
-      wrongList.appendChild(chip);
+      wrongList.appendChild(
+        chip
+      );
 
     }
   );
@@ -3965,9 +4950,9 @@ function updateWrongList() {
 }
 
 
-/* =========================================================
-   결과
-========================================================= */
+/* ============================================================
+   40. 결과
+============================================================ */
 
 function showResult(
   icon,
@@ -4048,9 +5033,68 @@ function closeModal() {
 }
 
 
-/* =========================================================
-   조합 표시
-========================================================= */
+/* ============================================================
+   41. 조합 / 어절 나누기
+============================================================ */
+
+function handleCompositionButton() {
+
+  if (
+    currentItem &&
+    currentItem.kind === "sentence"
+  ) {
+
+    showSentenceBoundaries =
+      !showSentenceBoundaries;
+
+
+    compositionButton.textContent =
+
+      showSentenceBoundaries
+
+        ? "어절 붙여 보기"
+
+        : "어절 나누기";
+
+
+    renderSentence();
+
+
+    return;
+
+  }
+
+
+  if (
+    practiceMode === "sentence"
+  ) {
+
+    showSentenceBoundaries =
+      !showSentenceBoundaries;
+
+
+    compositionButton.textContent =
+
+      showSentenceBoundaries
+
+        ? "어절 붙여 보기"
+
+        : "어절 나누기";
+
+
+    return;
+
+  }
+
+
+  showComposition =
+    !showComposition;
+
+
+  updateCompositionVisibility();
+
+}
+
 
 function updateCompositionVisibility() {
 
@@ -4083,13 +5127,54 @@ function updateCompositionVisibility() {
 }
 
 
-/* =========================================================
-   음성
-========================================================= */
+/* ============================================================
+   42. 한 어절씩 강조
+============================================================ */
+
+function highlightNextWord() {
+
+  if (
+    !currentItem ||
+    currentItem.kind !== "sentence"
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    highlightWordIndex >= 2
+  ) {
+
+    highlightWordIndex =
+      -1;
+
+  }
+
+  else {
+
+    highlightWordIndex++;
+
+  }
+
+
+  renderSentence();
+
+}
+
+
+/* ============================================================
+   43. 소리 듣기
+============================================================ */
 
 function speakCurrentCharacter() {
 
-  if (!currentItem) return;
+  if (!currentItem) {
+
+    return;
+
+  }
 
 
   if (
@@ -4100,7 +5185,7 @@ function speakCurrentCharacter() {
   ) {
 
     alert(
-      "음성 기능을 사용할 수 없는 브라우저입니다."
+      "이 브라우저에서는 음성 기능을 사용할 수 없습니다."
     );
 
     return;
@@ -4125,7 +5210,12 @@ function speakCurrentCharacter() {
 
 
   utterance.rate =
-    0.65;
+
+    currentItem.kind === "sentence"
+
+      ? 0.75
+
+      : 0.65;
 
 
   utterance.pitch =
@@ -4134,14 +5224,16 @@ function speakCurrentCharacter() {
 
   window
     .speechSynthesis
-    .speak(utterance);
+    .speak(
+      utterance
+    );
 
 }
 
 
-/* =========================================================
-   선택 제어
-========================================================= */
+/* ============================================================
+   44. 체크박스 선택 제어
+============================================================ */
 
 function setCheckedIndexes(
   container,
@@ -4161,7 +5253,9 @@ function setCheckedIndexes(
       input.checked =
 
         indexes.includes(
-          Number(input.value)
+          Number(
+            input.value
+          )
         );
 
     }
@@ -4225,9 +5319,9 @@ function clearAll(
 }
 
 
-/* =========================================================
-   섞기
-========================================================= */
+/* ============================================================
+   45. 배열 섞기
+============================================================ */
 
 function shuffle(
   array
@@ -4236,7 +5330,9 @@ function shuffle(
   for (
     let i =
       array.length - 1;
+
     i > 0;
+
     i--
   ) {
 
@@ -4264,36 +5360,100 @@ function shuffle(
 }
 
 
-/* =========================================================
-   이벤트
-========================================================= */
+/* ============================================================
+   46. 이벤트
+============================================================ */
+
+/* 연습 방식 */
 
 randomModeButton.addEventListener(
   "click",
-  () => setPracticeMode("random")
+  () =>
+    setPracticeMode(
+      "random"
+    )
 );
 
 
 wordModeButton.addEventListener(
   "click",
-  () => setPracticeMode("word")
+  () =>
+    setPracticeMode(
+      "word"
+    )
 );
 
+
+sentenceModeButton.addEventListener(
+  "click",
+  () =>
+    setPracticeMode(
+      "sentence"
+    )
+);
+
+
+/* 글자 수 */
 
 lengthButtons.forEach(
   button => {
 
     button.addEventListener(
       "click",
-      () =>
+      () => {
+
         setWordLength(
           button.dataset.length
-        )
+        );
+
+      }
     );
 
   }
 );
 
+
+/* 단어 종류 */
+
+wordFilterButtons.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        setWordFilter(
+          button.dataset.filter
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* 문장 단계 */
+
+sentenceStageButtons.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        setSentenceStage(
+          button.dataset.stage
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* 맞음 틀림 */
 
 correctButton.addEventListener(
   "click",
@@ -4307,6 +5467,8 @@ wrongButton.addEventListener(
 );
 
 
+/* 시작 종료 */
+
 startButton.addEventListener(
   "click",
   startNewPractice
@@ -4319,25 +5481,31 @@ finishButton.addEventListener(
 );
 
 
+/* 오답 */
+
 reviewButton.addEventListener(
   "click",
   startWrongReview
 );
 
 
+/* 조합 / 어절 */
+
 compositionButton.addEventListener(
   "click",
-  () => {
-
-    showComposition =
-      !showComposition;
-
-
-    updateCompositionVisibility();
-
-  }
+  handleCompositionButton
 );
 
+
+/* 어절 강조 */
+
+highlightButton.addEventListener(
+  "click",
+  highlightNextWord
+);
+
+
+/* 음성 */
 
 speakButton.addEventListener(
   "click",
@@ -4348,7 +5516,9 @@ speakButton.addEventListener(
 /* 초성 */
 
 document
-  .getElementById("basicConsonants")
+  .getElementById(
+    "basicConsonants"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4363,27 +5533,37 @@ document
 
 
 document
-  .getElementById("allConsonants")
+  .getElementById(
+    "allConsonants"
+  )
   .addEventListener(
     "click",
     () =>
-      selectAll(consonantGrid)
+      selectAll(
+        consonantGrid
+      )
   );
 
 
 document
-  .getElementById("clearConsonants")
+  .getElementById(
+    "clearConsonants"
+  )
   .addEventListener(
     "click",
     () =>
-      clearAll(consonantGrid)
+      clearAll(
+        consonantGrid
+      )
   );
 
 
 /* 모음 */
 
 document
-  .getElementById("basicVowels")
+  .getElementById(
+    "basicVowels"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4398,27 +5578,37 @@ document
 
 
 document
-  .getElementById("allVowels")
+  .getElementById(
+    "allVowels"
+  )
   .addEventListener(
     "click",
     () =>
-      selectAll(vowelGrid)
+      selectAll(
+        vowelGrid
+      )
   );
 
 
 document
-  .getElementById("clearVowels")
+  .getElementById(
+    "clearVowels"
+  )
   .addEventListener(
     "click",
     () =>
-      clearAll(vowelGrid)
+      clearAll(
+        vowelGrid
+      )
   );
 
 
-/* 받침 없음 */
+/* 받침 */
 
 document
-  .getElementById("noFinalOnly")
+  .getElementById(
+    "noFinalOnly"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4432,10 +5622,10 @@ document
   );
 
 
-/* 기본 받침 */
-
 document
-  .getElementById("basicFinals")
+  .getElementById(
+    "basicFinals"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4449,10 +5639,10 @@ document
   );
 
 
-/* 홑받침 */
-
 document
-  .getElementById("simpleFinals")
+  .getElementById(
+    "simpleFinals"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4466,10 +5656,10 @@ document
   );
 
 
-/* 겹받침 */
-
 document
-  .getElementById("doubleFinals")
+  .getElementById(
+    "doubleFinals"
+  )
   .addEventListener(
     "click",
     () => {
@@ -4483,25 +5673,29 @@ document
   );
 
 
-/* 전체 받침 */
-
 document
-  .getElementById("allFinals")
+  .getElementById(
+    "allFinals"
+  )
   .addEventListener(
     "click",
     () =>
-      selectAll(finalGrid)
+      selectAll(
+        finalGrid
+      )
   );
 
 
-/* 전체 해제 */
-
 document
-  .getElementById("clearFinals")
+  .getElementById(
+    "clearFinals"
+  )
   .addEventListener(
     "click",
     () =>
-      clearAll(finalGrid)
+      clearAll(
+        finalGrid
+      )
   );
 
 
@@ -4531,7 +5725,11 @@ document.addEventListener(
   "keydown",
   event => {
 
-    if (!gameStarted) return;
+    if (!gameStarted) {
+
+      return;
+
+    }
 
 
     if (
@@ -4557,13 +5755,23 @@ document.addEventListener(
 );
 
 
-/* =========================================================
-   초기화
-========================================================= */
+/* ============================================================
+   47. 초기화
+============================================================ */
 
-setPracticeMode("random");
+validateSentenceBank();
 
-setWordLength(1);
+setSentenceStage(
+  "easy"
+);
+
+setPracticeMode(
+  "random"
+);
+
+setWordLength(
+  1
+);
 
 updateScoreBoard();
 
